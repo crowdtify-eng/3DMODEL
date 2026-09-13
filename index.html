@@ -1,0 +1,3363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CARZZAP DETAILING STUDIO | Precision. Protection. Perfection. | OMR, Chennai</title>
+  <meta name="description" content="Ultra-premium automotive detailing, 9H ceramic coating & PPF studio in OMR Kottivakkam, Chennai. Precision surface restoration and paint protection.">
+  <meta name="theme-color" content="#050505">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none'%3E%3Cpath d='M12 2L2 7L12 12L22 7L12 2Z' stroke='%23C8A96B' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M2 17L12 22L22 17' stroke='%23FFFFFF' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round' opacity='0.8'/%3E%3Cpath d='M2 12L12 17L22 12' stroke='%23C8A96B' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round' opacity='0.5'/%3E%3C/svg%3E">
+  <meta property="og:title" content="CARZZAP DETAILING STUDIO | Precision. Protection. Perfection.">
+  <meta property="og:description" content="Ultra-premium automotive detailing, 9H ceramic coating & PPF studio in OMR Kottivakkam, Chennai.">
+  <meta property="og:type" content="website">
+  <style>
+    @font-face {
+      font-family: 'Audiowide';
+      src: url('Audiowide-Regular.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    :root {
+      --bg-void: #050505;
+      --bg-secondary: #0A0A0C;
+      --bg-graphite: #111214;
+      --bg-surface: #1A1B1E;
+      --text-primary: #FFFFFF;
+      --text-secondary: rgba(255, 255, 255, 0.62);
+      --text-muted: rgba(255, 255, 255, 0.40);
+      --accent-champagne: #C8A96B;
+      --accent-silver: #E2E8F0;
+      --glass-bg: rgba(10, 10, 12, 0.75);
+      --glass-border: rgba(255, 255, 255, 0.08);
+      --glass-blur: blur(20px);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--bg-void);
+      color: var(--text-primary);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      overflow-x: hidden;
+      line-height: 1.5;
+      selection-background-color: var(--accent-champagne);
+      selection-color: #000;
+    }
+
+    ::selection {
+      background: var(--accent-champagne);
+      color: #000;
+    }
+
+    a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible {
+      outline: 2px solid var(--accent-champagne);
+      outline-offset: 2px;
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: var(--bg-void);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 3px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--accent-champagne);
+    }
+
+    /* Minimal Preloader Bar */
+    .preload-progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 2px;
+      width: 0%;
+      background: linear-gradient(90deg, var(--accent-champagne), #fff);
+      z-index: 200;
+      transition: width 0.15s ease, opacity 0.5s ease;
+      box-shadow: 0 0 10px rgba(200, 169, 107, 0.8);
+    }
+
+    /* Ultra-Fresh Luxury Floating Glass Island Navbar */
+    .navbar-wrapper {
+      position: fixed;
+      top: 18px;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      display: flex;
+      justify-content: center;
+      padding: 0 24px;
+      pointer-events: none;
+    }
+
+    .navbar {
+      width: 100%;
+      max-width: 1160px;
+      height: 58px;
+      background: rgba(10, 10, 14, 0.75);
+      backdrop-filter: blur(28px) saturate(190%);
+      -webkit-backdrop-filter: blur(28px) saturate(190%);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 9999px;
+      padding: 0 8px 0 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.65), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+      pointer-events: auto;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .navbar.scrolled {
+      background: rgba(8, 8, 10, 0.90);
+      border-color: rgba(200, 169, 107, 0.3);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.8), 0 0 24px rgba(200, 169, 107, 0.12);
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: #fff;
+      flex-shrink: 0;
+    }
+
+    .brand-emblem {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+      filter: drop-shadow(0 0 8px rgba(200, 169, 107, 0.4));
+    }
+
+    .brand-text-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .brand-title {
+      font-family: 'Audiowide', sans-serif;
+      font-size: 1.02rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: #fff;
+      white-space: nowrap;
+    }
+
+    .brand-title span {
+      color: var(--accent-champagne);
+    }
+
+    .brand-badge {
+      font-size: 0.48rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: var(--accent-champagne);
+      background: rgba(200, 169, 107, 0.12);
+      border: 1px solid rgba(200, 169, 107, 0.28);
+      padding: 3px 8px;
+      border-radius: 9999px;
+      white-space: nowrap;
+    }
+
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      list-style: none;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      padding: 3px;
+      border-radius: 9999px;
+    }
+
+    .nav-link {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 0.66rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      transition: all 0.25s ease;
+      font-weight: 500;
+      padding: 6px 13px;
+      border-radius: 9999px;
+      white-space: nowrap;
+      display: block;
+    }
+
+    .nav-link:hover {
+      color: #fff;
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .nav-link.active {
+      color: #fff;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(200, 169, 107, 0.35);
+      box-shadow: 0 0 16px rgba(200, 169, 107, 0.2);
+      font-weight: 600;
+    }
+
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 20px;
+      font-size: 0.68rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #050505;
+      background: linear-gradient(135deg, #FFFFFF 0%, #DFCA9B 40%, #C8A96B 100%);
+      border: none;
+      border-radius: 9999px;
+      text-decoration: none;
+      font-weight: 700;
+      white-space: nowrap;
+      flex-shrink: 0;
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 4px 18px rgba(200, 169, 107, 0.35);
+    }
+
+    .nav-cta:hover {
+      transform: scale(1.04);
+      box-shadow: 0 6px 28px rgba(200, 169, 107, 0.55), 0 0 16px rgba(255, 255, 255, 0.4);
+      color: #000;
+    }
+
+    .cta-arrow {
+      width: 12px;
+      height: 12px;
+      transition: transform 0.25s ease;
+    }
+
+    .nav-cta:hover .cta-arrow {
+      transform: translateX(3px);
+    }
+
+    /* Fixed Scrollytelling Stage (Pinned 100vh) */
+    .viewport-stage {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      height: 100dvh;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      pointer-events: none;
+      background: #050505;
+    }
+
+    /* Dynamic Atmospheric Studio Lighting */
+    .studio-lighting {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+      transition: background 1.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 1.4s ease;
+      opacity: 0.9;
+    }
+
+    .lighting-phase-1 {
+      background: radial-gradient(circle at 62% 48%, rgba(220, 230, 245, 0.10) 0%, rgba(10, 15, 25, 0.04) 45%, transparent 75%);
+    }
+    .lighting-phase-2 {
+      background: radial-gradient(circle at 62% 48%, rgba(0, 168, 255, 0.13) 0%, rgba(0, 80, 160, 0.05) 50%, transparent 75%);
+    }
+    .lighting-phase-3 {
+      background: radial-gradient(circle at 62% 48%, rgba(255, 145, 30, 0.13) 0%, rgba(180, 65, 10, 0.05) 50%, transparent 75%);
+    }
+    .lighting-phase-4 {
+      background: radial-gradient(circle at 62% 48%, rgba(200, 169, 107, 0.18) 0%, rgba(140, 110, 50, 0.07) 50%, transparent 75%);
+    }
+    .lighting-phase-5 {
+      background: radial-gradient(circle at 62% 48%, rgba(46, 213, 115, 0.13) 0%, rgba(20, 120, 70, 0.05) 50%, transparent 75%);
+    }
+    .lighting-phase-6 {
+      background: radial-gradient(circle at 62% 48%, rgba(230, 126, 34, 0.14) 0%, rgba(120, 50, 20, 0.05) 50%, transparent 75%);
+    }
+    .lighting-phase-7 {
+      background: radial-gradient(circle at 62% 48%, rgba(255, 255, 255, 0.18) 0%, rgba(200, 169, 107, 0.09) 50%, transparent 75%);
+    }
+
+    .canvas-container {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      height: 100dvh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2;
+    }
+
+    #sequenceCanvas {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+
+    /* Cinematic Edge Vignette to blend image borders into deep black */
+    .canvas-vignette {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 50%, transparent 60%, rgba(5, 5, 5, 0.82) 85%, #050505 100%);
+      pointer-events: none;
+    }
+
+    /* Telemetry Data HUD Overlay in Viewport */
+    /* Admin-Changeable Live Booking Status Pill (Single-line, zero overlap) */
+    .booking-status-pill {
+      position: fixed;
+      bottom: 24px;
+      left: 36px;
+      z-index: 95;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(10, 10, 14, 0.85);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 9999px;
+      padding: 7px 18px;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      pointer-events: auto;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .booking-status-pill.hidden {
+      opacity: 0 !important;
+      visibility: hidden !important;
+      pointer-events: none !important;
+      transform: translateY(24px) !important;
+    }
+
+    .booking-pulse-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #25D366;
+      box-shadow: 0 0 10px #25D366;
+      display: inline-block;
+      flex-shrink: 0;
+      animation: bookingPulse 2s infinite;
+    }
+
+    .booking-status-pill.closed .booking-pulse-dot {
+      background: #EAB308;
+      box-shadow: 0 0 10px #EAB308;
+    }
+
+    @keyframes bookingPulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.85); }
+    }
+
+    .booking-status-text {
+      font-size: 0.68rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: #25D366;
+      white-space: nowrap;
+    }
+
+    .booking-status-pill.closed .booking-status-text {
+      color: #EAB308;
+    }
+
+    .booking-status-sep {
+      color: rgba(255, 255, 255, 0.2);
+    }
+
+    .booking-status-detail {
+      font-size: 0.65rem;
+      color: var(--text-secondary);
+      letter-spacing: 0.08em;
+      white-space: nowrap;
+    }
+
+    @media (max-width: 768px) {
+      .booking-status-pill {
+        bottom: 20px;
+        left: 20px;
+        padding: 6px 14px;
+      }
+      .booking-status-detail {
+        display: none;
+      }
+    }
+
+    .telemetry-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .telemetry-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent-champagne);
+      box-shadow: 0 0 8px var(--accent-champagne);
+      animation: telemetryPulse 2s infinite ease-in-out;
+    }
+
+    @keyframes telemetryPulse {
+      0%, 100% { opacity: 0.4; transform: scale(0.9); }
+      50% { opacity: 1; transform: scale(1.3); }
+    }
+
+    .telemetry-val {
+      color: var(--accent-champagne);
+      font-weight: 600;
+    }
+
+    /* Scrollytelling Scroll Controller Container */
+    .scroll-container {
+      position: relative;
+      z-index: 10;
+      width: 100%;
+    }
+
+    /* Phase Section Cards with Modern Frosted Curved Glass */
+    .phase-section {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 0 8vw;
+      position: relative;
+    }
+
+    .phase-content {
+      max-width: 580px;
+      opacity: 0;
+      transform: translateY(40px) scale(0.97);
+      filter: blur(4px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                  filter 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+      pointer-events: none;
+      background: rgba(12, 13, 17, 0.78);
+      padding: 42px 44px;
+      border-radius: 24px;
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.75), inset 0 1px 0 rgba(255, 255, 255, 0.14);
+      transform-style: preserve-3d;
+      will-change: transform, opacity;
+    }
+
+    .phase-section.active .phase-content {
+      pointer-events: auto;
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      filter: blur(0px);
+    }
+
+    /* Phase Tag & Expanding Accent Line */
+    .phase-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.62rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--accent-champagne);
+      font-weight: 600;
+      margin-bottom: 18px;
+    }
+
+    .phase-tag::before {
+      content: '';
+      display: inline-block;
+      width: 0px;
+      height: 1px;
+      background: var(--accent-champagne);
+      box-shadow: 0 0 10px rgba(200, 169, 107, 0.8);
+      transition: width 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .phase-section.active .phase-tag::before {
+      width: 32px;
+    }
+
+    /* Masked Headline Rise & Shimmer */
+    .phase-headline {
+      font-family: 'Audiowide', sans-serif;
+      font-size: clamp(2.2rem, 4.2vw, 3.8rem);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+      color: #fff;
+      margin-bottom: 18px;
+      overflow: hidden;
+    }
+
+    .headline-line {
+      display: block;
+      transform: translateY(110%);
+      opacity: 0;
+      transition: transform 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+                  opacity 0.85s ease;
+    }
+
+    .phase-section.active .headline-line {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .phase-section.active .headline-line:nth-child(2) {
+      transition-delay: 0.08s;
+    }
+
+    .headline-highlight {
+      background: linear-gradient(120deg, #FFFFFF 0%, var(--accent-champagne) 45%, #FFFFFF 65%, var(--accent-champagne) 100%);
+      background-size: 250% 100%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: metallicShimmer 5s ease infinite;
+    }
+
+    @keyframes metallicShimmer {
+      0% { background-position: 100% 0; }
+      50% { background-position: 0% 0; }
+      100% { background-position: 100% 0; }
+    }
+
+    .phase-copy {
+      font-size: 0.96rem;
+      color: var(--text-secondary);
+      font-weight: 300;
+      line-height: 1.7;
+      margin-bottom: 24px;
+      opacity: 0;
+      transform: translateY(15px);
+      transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.16s,
+                  transform 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.16s;
+    }
+
+    .phase-section.active .phase-copy {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Staggered Modern Capsule Technical Badges */
+    .technical-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .tech-pill {
+      font-size: 0.58rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.04);
+      padding: 7px 16px;
+      border-radius: 9999px;
+      opacity: 0;
+      transform: translateY(12px) scale(0.92);
+      transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .phase-section.active .tech-pill {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      border-color: rgba(200, 169, 107, 0.4);
+      background: rgba(200, 169, 107, 0.08);
+      color: rgba(255, 255, 255, 0.95);
+    }
+
+    .phase-section.active .tech-pill:nth-child(1) { transition-delay: 0.22s; }
+    .phase-section.active .tech-pill:nth-child(2) { transition-delay: 0.29s; }
+    .phase-section.active .tech-pill:nth-child(3) { transition-delay: 0.36s; }
+    .phase-section.active .tech-pill:nth-child(4) { transition-delay: 0.43s; }
+    .phase-section.active .tech-pill:nth-child(5) { transition-delay: 0.50s; }
+
+    /* Warranty Selector for Phase 4 */
+    .warranty-selector {
+      display: flex;
+      gap: 12px;
+      margin-top: 20px;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.35s;
+    }
+
+    .phase-section.active .warranty-selector {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .warranty-btn {
+      padding: 8px 20px;
+      font-size: 0.62rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      border: 1px solid rgba(200, 169, 107, 0.35);
+      background: rgba(200, 169, 107, 0.06);
+      color: #fff;
+      cursor: pointer;
+      border-radius: 9999px;
+      transition: all 0.3s ease;
+    }
+
+    .warranty-btn.active, .warranty-btn:hover {
+      background: var(--accent-champagne);
+      color: #000;
+      font-weight: 600;
+    }
+
+    /* Right-side Floating Frosted HUD Capsule & Laser Guide */
+    .hud-tracker {
+      position: fixed;
+      right: 32px;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 90;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      pointer-events: auto;
+      background: rgba(10, 10, 14, 0.55);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 9999px;
+      padding: 20px 12px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+      transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+                  visibility 0.5s;
+    }
+
+    .hud-tracker.hidden {
+      opacity: 0 !important;
+      visibility: hidden !important;
+      pointer-events: none !important;
+      transform: translateY(-50%) translateX(60px) !important;
+    }
+
+    .hud-track-line {
+      position: absolute;
+      top: 24px;
+      bottom: 24px;
+      right: 14px;
+      width: 2px;
+      background: rgba(255, 255, 255, 0.1);
+      z-index: 0;
+    }
+
+    .hud-track-fill {
+      width: 100%;
+      height: 0%;
+      background: linear-gradient(180deg, var(--accent-champagne), #fff);
+      box-shadow: 0 0 8px rgba(200, 169, 107, 0.8);
+      transition: height 0.15s linear;
+    }
+
+    .hud-step {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      cursor: pointer;
+      text-decoration: none;
+      opacity: 0.35;
+      transition: all 0.35s ease;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hud-step:hover, .hud-step.active {
+      opacity: 1;
+    }
+
+    .hud-label {
+      font-size: 0.52rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: #fff;
+      font-weight: 600;
+      display: none;
+      text-align: right;
+    }
+
+    .hud-tracker:hover .hud-label {
+      display: block;
+    }
+
+    .hud-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.4);
+      transition: all 0.3s ease;
+    }
+
+    .hud-step.active .hud-dot {
+      background: var(--accent-champagne);
+      transform: scale(1.6);
+      box-shadow: 0 0 12px var(--accent-champagne);
+    }
+
+    /* Floating WhatsApp Studio Action Button */
+    .whatsapp-fab {
+      position: fixed;
+      bottom: 84px;
+      right: 52px;
+      z-index: 120;
+      width: 62px;
+      height: 62px;
+      border-radius: 50%;
+      background: #25D366;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      box-shadow: 0 10px 30px rgba(37, 211, 102, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.15);
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      cursor: pointer;
+    }
+
+    @media (max-width: 600px) {
+      .whatsapp-fab {
+        bottom: 80px;
+        right: 20px;
+        width: 56px;
+        height: 56px;
+      }
+    }
+
+    .whatsapp-fab:hover {
+      transform: scale(1.08);
+      box-shadow: 0 14px 40px rgba(37, 211, 102, 0.65), 0 0 0 1px rgba(255, 255, 255, 0.25);
+    }
+
+    .whatsapp-pulse {
+      position: absolute;
+      inset: -4px;
+      border-radius: 50%;
+      border: 2px solid rgba(37, 211, 102, 0.7);
+      animation: whatsappPulse 2.2s infinite ease-out;
+      pointer-events: none;
+    }
+
+    @keyframes whatsappPulse {
+      0% { transform: scale(0.92); opacity: 0.85; }
+      70% { transform: scale(1.48); opacity: 0; }
+      100% { transform: scale(1.48); opacity: 0; }
+    }
+
+    .whatsapp-icon {
+      width: 30px;
+      height: 30px;
+      fill: #fff;
+      position: relative;
+      z-index: 2;
+    }
+
+    .whatsapp-tooltip {
+      position: absolute;
+      right: 70px;
+      background: rgba(12, 13, 16, 0.94);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: #fff;
+      font-size: 0.65rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 9px 18px;
+      border-radius: 9999px;
+      white-space: nowrap;
+      pointer-events: none;
+      opacity: 0;
+      transform: translateX(10px);
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+      font-weight: 500;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    .whatsapp-tooltip span {
+      color: var(--accent-champagne);
+    }
+
+    .whatsapp-fab:hover .whatsapp-tooltip {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    /* Bottom Final Phase (Appointment & Studio Spec) */
+    .final-stage-section {
+      min-height: 100vh;
+      background: #050505;
+      position: relative;
+      z-index: 20;
+      padding: 120px 8vw 80px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .final-hero-banner {
+      text-align: center;
+      max-width: 900px;
+      margin-bottom: 70px;
+    }
+
+    .final-headline {
+      font-family: 'Audiowide', sans-serif;
+      font-size: clamp(2.8rem, 6vw, 5.8rem);
+      line-height: 1.05;
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+      color: #fff;
+      margin-bottom: 18px;
+    }
+
+    .final-headline span {
+      background: linear-gradient(180deg, #FFFFFF 0%, var(--accent-champagne) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .final-subtext {
+      font-size: 1.15rem;
+      color: var(--text-secondary);
+      font-weight: 300;
+      letter-spacing: 0.04em;
+    }
+
+    /* Clean Luxury Editorial Booking Form */
+    .booking-card {
+      width: 100%;
+      max-width: 840px;
+      background: rgba(12, 13, 17, 0.85);
+      backdrop-filter: blur(28px);
+      -webkit-backdrop-filter: blur(28px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 28px;
+      padding: 56px 48px;
+      box-shadow: 0 40px 100px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+      position: relative;
+    }
+
+    .booking-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 60px;
+      right: 60px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--accent-champagne), transparent);
+    }
+
+    .form-header {
+      margin-bottom: 40px;
+      text-align: center;
+    }
+
+    .form-title {
+      font-family: 'Audiowide', sans-serif;
+      font-size: 1.5rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .form-subtitle {
+      font-size: 0.65rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--accent-champagne);
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .full-width {
+      grid-column: span 2;
+    }
+
+    .input-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .input-label {
+      font-size: 0.58rem;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    .form-input {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      padding: 14px 18px;
+      color: #fff;
+      font-size: 0.9rem;
+      outline: none;
+      transition: all 0.3s ease;
+      border-radius: 12px;
+      font-family: inherit;
+      color-scheme: dark;
+    }
+
+    .form-input:focus {
+      border-color: var(--accent-champagne);
+      background: rgba(200, 169, 107, 0.04);
+      box-shadow: 0 0 16px rgba(200, 169, 107, 0.15);
+    }
+
+    textarea.form-input {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    .btn-submit {
+      width: 100%;
+      padding: 16px;
+      background: linear-gradient(135deg, #FFFFFF 0%, #DFCA9B 40%, #C8A96B 100%);
+      color: #050505;
+      font-size: 0.72rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      font-weight: 700;
+      border: none;
+      border-radius: 9999px;
+      cursor: pointer;
+      transition: all 0.35s ease;
+      margin-top: 12px;
+      box-shadow: 0 4px 20px rgba(200, 169, 107, 0.35);
+    }
+
+    .btn-submit:hover {
+      transform: scale(1.02);
+      box-shadow: 0 8px 32px rgba(200, 169, 107, 0.55);
+    }
+
+    /* Studio Footer & Map Context */
+    .studio-footer {
+      width: 100%;
+      max-width: 1100px;
+      margin-top: 100px;
+      padding-top: 40px;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--text-muted);
+      font-size: 0.68rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .footer-brand {
+      font-family: 'Audiowide', sans-serif;
+      color: #fff;
+    }
+
+    /* Booking Feedback Banner */
+    .booking-feedback {
+      display: none;
+      background: rgba(200, 169, 107, 0.08);
+      border: 1px solid var(--accent-champagne);
+      padding: 16px 20px;
+      margin-bottom: 24px;
+      border-radius: 14px;
+      color: #fff;
+      text-align: center;
+      font-size: 0.8rem;
+      letter-spacing: 0.06em;
+      line-height: 1.6;
+      animation: fadeIn 0.4s ease forwards;
+    }
+
+    .booking-feedback strong {
+      color: var(--accent-champagne);
+      display: block;
+      font-family: 'Audiowide', sans-serif;
+      font-size: 0.85rem;
+      margin-bottom: 4px;
+      letter-spacing: 0.14em;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Mobile & Tablet Responsive */
+    @media (max-width: 900px) {
+      .navbar-wrapper {
+        top: 10px;
+        padding: 0 12px;
+      }
+      .navbar {
+        height: auto;
+        padding: 8px 12px;
+        flex-wrap: wrap;
+        border-radius: 20px;
+        gap: 8px;
+      }
+      .nav-menu {
+        display: flex;
+        overflow-x: auto;
+        max-width: 100%;
+        scrollbar-width: none;
+        -webkit-overflow-scrolling: touch;
+        order: 3;
+        width: 100%;
+        justify-content: flex-start;
+        padding: 4px 6px;
+      }
+      .brand-title {
+        font-size: 0.92rem;
+      }
+      .brand-badge {
+        display: none;
+      }
+      .nav-cta {
+        padding: 7px 14px;
+        font-size: 0.62rem;
+      }
+      .phase-section {
+        padding: 0 5vw;
+        align-items: flex-end;
+        padding-bottom: 75px;
+      }
+      .phase-content {
+        padding: 24px 20px;
+        background: rgba(10, 10, 12, 0.88);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        width: 100%;
+        max-width: 100%;
+        border-radius: 18px;
+      }
+      .phase-headline {
+        font-size: clamp(1.6rem, 6.5vw, 2.4rem);
+        margin-bottom: 12px;
+      }
+      .phase-copy {
+        font-size: 0.86rem;
+        line-height: 1.55;
+        margin-bottom: 16px;
+      }
+      .technical-badges {
+        gap: 6px;
+      }
+      .tech-pill {
+        font-size: 0.52rem;
+        padding: 5px 12px;
+      }
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+      .full-width {
+        grid-column: span 1;
+      }
+      .booking-card {
+        padding: 36px 20px;
+        border-radius: 20px;
+      }
+      .studio-footer {
+        flex-direction: column;
+        gap: 16px;
+        text-align: center;
+      }
+      .hud-tracker {
+        display: none;
+      }
+      .telemetry-hud {
+        display: none;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .navbar-wrapper {
+        top: 8px;
+        padding: 0 10px;
+      }
+      .navbar {
+        height: 48px;
+        padding: 0 6px 0 12px;
+      }
+      .brand-title {
+        font-size: 0.85rem;
+      }
+      .brand-emblem {
+        width: 16px;
+        height: 16px;
+      }
+      .nav-cta {
+        padding: 6px 12px;
+        font-size: 0.58rem;
+      }
+      .whatsapp-fab {
+        bottom: 20px;
+        right: 20px;
+        width: 48px;
+        height: 48px;
+      }
+      .whatsapp-icon {
+        width: 24px;
+        height: 24px;
+      }
+      .whatsapp-tooltip {
+        display: none;
+      }
+      .final-stage-section {
+        padding: 80px 5vw 60px;
+      }
+    }
+  
+    /* ==========================================================================
+       EDITORIAL SECTIONS (ABOUT, SERVICES, GALLERY, CONTACT) & 1-CLICK NAV
+       ========================================================================== */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    .editorial-section {
+      min-height: 100vh;
+      background: #050505;
+      position: relative;
+      z-index: 20;
+      padding: 120px 8vw 90px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      overflow: hidden;
+    }
+
+    .editorial-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 900px;
+      height: 350px;
+      background: radial-gradient(ellipse at 50% 0%, rgba(200, 169, 107, 0.09) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .section-header {
+      text-align: center;
+      max-width: 860px;
+      margin: 0 auto 60px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .section-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent-champagne);
+      background: rgba(200, 169, 107, 0.1);
+      border: 1px solid rgba(200, 169, 107, 0.3);
+      padding: 5px 16px;
+      border-radius: 9999px;
+      margin-bottom: 20px;
+    }
+
+    .section-headline {
+      font-family: 'Audiowide', sans-serif;
+      font-size: clamp(2.2rem, 4.5vw, 3.8rem);
+      line-height: 1.15;
+      text-transform: uppercase;
+      color: #fff;
+      margin-bottom: 18px;
+      letter-spacing: -0.01em;
+    }
+
+    .section-headline span {
+      background: linear-gradient(180deg, #FFFFFF 0%, var(--accent-champagne) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .section-subtext {
+      font-size: 1.05rem;
+      color: var(--text-secondary);
+      line-height: 1.65;
+      font-weight: 300;
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    .deepdive-banner {
+      margin-top: 50px;
+      text-align: center;
+    }
+
+    .deepdive-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 28px;
+      font-size: 0.72rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #FFFFFF;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(200, 169, 107, 0.35);
+      border-radius: 9999px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      backdrop-filter: blur(16px);
+    }
+
+    .deepdive-btn:hover {
+      background: rgba(200, 169, 107, 0.15);
+      border-color: var(--accent-champagne);
+      color: var(--accent-champagne);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 30px rgba(200, 169, 107, 0.2);
+    }
+
+    /* ABOUT US SECTION */
+    .about-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+      max-width: 1200px;
+      margin: 0 auto 50px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .about-card {
+      background: rgba(12, 13, 17, 0.75);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      border-radius: 22px;
+      padding: 38px 32px;
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .about-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(200, 169, 107, 0.4), transparent);
+    }
+
+    .about-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(200, 169, 107, 0.35);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6), 0 0 24px rgba(200, 169, 107, 0.1);
+    }
+
+    .about-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 12px;
+      background: rgba(200, 169, 107, 0.1);
+      border: 1px solid rgba(200, 169, 107, 0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent-champagne);
+      margin-bottom: 24px;
+    }
+
+    .about-card-title {
+      font-family: 'Audiowide', sans-serif;
+      font-size: 1.15rem;
+      text-transform: uppercase;
+      color: #fff;
+      letter-spacing: 0.04em;
+      margin-bottom: 14px;
+    }
+
+    .about-card-copy {
+      font-size: 0.92rem;
+      color: var(--text-secondary);
+      line-height: 1.65;
+      font-weight: 300;
+    }
+
+    /* PERFORMANCE METRICS STRIP */
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 36px 40px;
+      background: rgba(14, 15, 20, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      border-radius: 20px;
+      backdrop-filter: blur(20px);
+      position: relative;
+      z-index: 2;
+    }
+
+    .metric-item {
+      text-align: center;
+      position: relative;
+    }
+
+    .metric-item:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: 15%;
+      height: 70%;
+      width: 1px;
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .metric-val {
+      font-family: 'Audiowide', sans-serif;
+      font-size: clamp(2rem, 3.2vw, 2.8rem);
+      color: var(--accent-champagne);
+      line-height: 1.1;
+      margin-bottom: 6px;
+      letter-spacing: 0.02em;
+    }
+
+    .metric-label {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    /* SERVICES SECTION */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+      max-width: 1240px;
+      margin: 0 auto 40px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .service-card {
+      background: rgba(12, 13, 17, 0.78);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      border-radius: 22px;
+      padding: 38px 32px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+    }
+
+    .service-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(200, 169, 107, 0.38);
+      box-shadow: 0 28px 70px rgba(0, 0, 0, 0.7), 0 0 28px rgba(200, 169, 107, 0.12);
+    }
+
+    .service-badge {
+      display: inline-block;
+      font-size: 0.58rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: var(--accent-champagne);
+      background: rgba(200, 169, 107, 0.1);
+      border: 1px solid rgba(200, 169, 107, 0.25);
+      padding: 4px 10px;
+      border-radius: 9999px;
+      margin-bottom: 18px;
+      align-self: flex-start;
+    }
+
+    .service-title {
+      font-family: 'Audiowide', sans-serif;
+      font-size: 1.25rem;
+      color: #fff;
+      letter-spacing: 0.02em;
+      margin-bottom: 14px;
+      line-height: 1.25;
+    }
+
+    .service-desc {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      font-weight: 300;
+      margin-bottom: 22px;
+    }
+
+    .service-features {
+      list-style: none;
+      margin-bottom: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .service-feature {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.82rem;
+      color: rgba(255, 255, 255, 0.85);
+    }
+
+    .service-feature svg {
+      width: 14px;
+      height: 14px;
+      color: var(--accent-champagne);
+      flex-shrink: 0;
+    }
+
+    .service-tech-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 26px;
+    }
+
+    .service-pill {
+      font-size: 0.58rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.7);
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 4px 10px;
+      border-radius: 9999px;
+    }
+
+    .service-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: auto;
+    }
+
+    .service-btn-primary {
+      flex: 1;
+      text-align: center;
+      padding: 10px 16px;
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: #050505;
+      background: linear-gradient(135deg, #FFFFFF 0%, #DFCA9B 40%, #C8A96B 100%);
+      border-radius: 9999px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .service-btn-primary:hover {
+      transform: scale(1.02);
+      box-shadow: 0 4px 16px rgba(200, 169, 107, 0.4);
+    }
+
+    .service-btn-wa {
+      padding: 9px 14px;
+      border-radius: 9999px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(255, 255, 255, 0.04);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #25D366;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .service-btn-wa:hover {
+      background: rgba(37, 211, 102, 0.12);
+      border-color: #25D366;
+    }
+
+    /* GALLERY & BEFORE/AFTER SLIDER SECTION */
+    .ba-slider-container {
+      max-width: 1000px;
+      margin: 0 auto 60px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .ba-slider {
+      position: relative;
+      width: 100%;
+      max-width: 1000px;
+      aspect-ratio: 16/9;
+      margin: 0 auto;
+      border-radius: 24px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: 0 35px 90px rgba(0, 0, 0, 0.85);
+      user-select: none;
+      touch-action: none;
+      cursor: ew-resize;
+      --split: 50%;
+    }
+
+    .ba-layer {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+
+    .ba-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      pointer-events: none;
+    }
+
+    .ba-layer-after {
+      clip-path: polygon(0 0, var(--split) 0, var(--split) 100%, 0 100%);
+      z-index: 2;
+    }
+
+    .ba-divider-line {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: var(--split);
+      width: 2px;
+      background: #FFFFFF;
+      box-shadow: 0 0 16px rgba(255, 255, 255, 0.9), 0 0 24px var(--accent-champagne);
+      z-index: 5;
+      transform: translateX(-50%);
+      pointer-events: none;
+    }
+
+    .ba-handle {
+      position: absolute;
+      top: 50%;
+      left: var(--split);
+      transform: translate(-50%, -50%);
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: #FFFFFF;
+      box-shadow: 0 0 24px rgba(0, 0, 0, 0.8), 0 0 15px rgba(200, 169, 107, 0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+      pointer-events: none;
+      color: #050505;
+    }
+
+    .ba-tag {
+      position: absolute;
+      top: 20px;
+      z-index: 5;
+      font-size: 0.62rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      font-weight: 700;
+      padding: 6px 14px;
+      border-radius: 9999px;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+
+    .ba-tag-before {
+      right: 20px;
+      background: rgba(220, 38, 38, 0.35);
+      border: 1px solid rgba(220, 38, 38, 0.55);
+      color: #FFAAAA;
+    }
+
+    .ba-tag-after {
+      left: 20px;
+      background: rgba(200, 169, 107, 0.35);
+      border: 1px solid rgba(200, 169, 107, 0.55);
+      color: #FFFFFF;
+    }
+
+    .ba-handle {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: #FFFFFF;
+      box-shadow: 0 0 24px rgba(0, 0, 0, 0.8), 0 0 15px rgba(200, 169, 107, 0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+      pointer-events: none;
+      color: #050505;
+    }
+
+    .gallery-showcase-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    .gallery-item {
+      background: rgba(12, 13, 17, 0.75);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 20px;
+      overflow: hidden;
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+    }
+
+    .gallery-item:hover {
+      transform: translateY(-6px);
+      border-color: rgba(200, 169, 107, 0.4);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.7);
+    }
+
+    .gallery-thumb-wrap {
+      position: relative;
+      aspect-ratio: 16/10;
+      overflow: hidden;
+    }
+
+    .gallery-thumb {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .gallery-item:hover .gallery-thumb {
+      transform: scale(1.06);
+    }
+
+    .gallery-gloss-badge {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      font-family: monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.14em;
+      font-weight: 700;
+      color: var(--accent-champagne);
+      background: rgba(10, 10, 14, 0.85);
+      border: 1px solid rgba(200, 169, 107, 0.3);
+      padding: 4px 10px;
+      border-radius: 9999px;
+      backdrop-filter: blur(12px);
+    }
+
+    .gallery-info {
+      padding: 22px 24px;
+    }
+
+    .gallery-car-title {
+      font-family: 'Audiowide', sans-serif;
+      font-size: 1.05rem;
+      color: #fff;
+      margin-bottom: 6px;
+      letter-spacing: 0.02em;
+    }
+
+    .gallery-treatment-tag {
+      font-size: 0.75rem;
+      color: var(--text-secondary);
+      font-weight: 300;
+    }
+
+    /* CONTACT SECTION */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: 36px;
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    .contact-details-card {
+      background: rgba(12, 13, 17, 0.8);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 24px;
+      padding: 44px 38px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .contact-title {
+      font-family: 'Audiowide', sans-serif;
+      font-size: 1.5rem;
+      color: #fff;
+      letter-spacing: 0.02em;
+      margin-bottom: 24px;
+      text-transform: uppercase;
+    }
+
+    .contact-info-list {
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+      margin-bottom: 32px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    .contact-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: rgba(200, 169, 107, 0.1);
+      border: 1px solid rgba(200, 169, 107, 0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent-champagne);
+      flex-shrink: 0;
+    }
+
+    .contact-label {
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+      font-weight: 600;
+    }
+
+    .contact-value {
+      font-size: 0.95rem;
+      color: #FFFFFF;
+      line-height: 1.5;
+    }
+
+    .contact-value a {
+      color: #FFFFFF;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .contact-value a:hover {
+      color: var(--accent-champagne);
+    }
+
+    .contact-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .contact-cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 24px;
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 700;
+      border-radius: 9999px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .contact-cta-call {
+      background: linear-gradient(135deg, #FFFFFF 0%, #DFCA9B 40%, #C8A96B 100%);
+      color: #050505;
+    }
+
+    .contact-cta-call:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(200, 169, 107, 0.35);
+    }
+
+    .contact-cta-wa {
+      background: rgba(37, 211, 102, 0.15);
+      border: 1px solid rgba(37, 211, 102, 0.4);
+      color: #25D366;
+    }
+
+    .contact-cta-wa:hover {
+      background: rgba(37, 211, 102, 0.25);
+      transform: translateY(-2px);
+    }
+
+    .contact-map-card {
+      background: rgba(12, 13, 17, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 24px;
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      min-height: 420px;
+    }
+
+    .map-frame {
+      width: 100%;
+      height: 100%;
+      flex: 1;
+      border: none;
+      filter: invert(90%) hue-rotate(180deg) brightness(85%) contrast(120%);
+    }
+
+    .map-overlay-badge {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      right: 20px;
+      background: rgba(10, 10, 14, 0.88);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 16px;
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .map-badge-text {
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+    }
+
+    .map-badge-text strong {
+      color: #fff;
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .map-badge-link {
+      padding: 8px 16px;
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: var(--accent-champagne);
+      background: rgba(200, 169, 107, 0.15);
+      border: 1px solid rgba(200, 169, 107, 0.3);
+      border-radius: 9999px;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: all 0.25s ease;
+    }
+
+    .map-badge-link:hover {
+      background: var(--accent-champagne);
+      color: #050505;
+    }
+
+    /* MEDIA QUERIES FOR EDITORIAL SECTIONS & NAVIGATION */
+    @media (max-width: 1100px) {
+      .navbar {
+        max-width: 98vw;
+      }
+      .nav-link {
+        font-size: 0.60rem;
+        padding: 5px 9px;
+      }
+    }
+
+    @media (max-width: 960px) {
+      .navbar {
+        height: auto;
+        padding: 8px 12px;
+        flex-wrap: wrap;
+        border-radius: 20px;
+        gap: 10px;
+      }
+      .nav-menu {
+        display: flex;
+        overflow-x: auto;
+        max-width: 100%;
+        scrollbar-width: none;
+        -webkit-overflow-scrolling: touch;
+        order: 3;
+        width: 100%;
+        justify-content: flex-start;
+        padding: 4px 6px;
+      }
+      .nav-menu::-webkit-scrollbar {
+        display: none;
+      }
+      .about-cards-grid,
+      .services-grid,
+      .gallery-showcase-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .metrics-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 28px;
+      }
+      .metric-item:nth-child(2)::after {
+        display: none;
+      }
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .editorial-section {
+        padding: 80px 6vw 60px;
+      }
+      .about-cards-grid,
+      .services-grid,
+      .gallery-showcase-grid {
+        grid-template-columns: 1fr;
+      }
+      .metrics-grid {
+        grid-template-columns: 1fr;
+        padding: 24px;
+      }
+      .metric-item::after {
+        display: none !important;
+      }
+      .ba-slider {
+        aspect-ratio: 4/3;
+      }
+    }
+
+  
+    /* =========================================================================
+       OPTION B: STUDIO ADMIN CONTROL CONSOLE (?admin=true) & CUSTOMER CLOSED STATE
+       ========================================================================= */
+    .admin-console-bar {
+      position: fixed;
+      top: 90px;
+      right: 32px;
+      z-index: 999;
+      background: rgba(14, 16, 22, 0.94);
+      backdrop-filter: blur(28px);
+      -webkit-backdrop-filter: blur(28px);
+      border: 1px solid rgba(200, 169, 107, 0.45);
+      border-radius: 18px;
+      padding: 16px 20px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.9), 0 0 30px rgba(200, 169, 107, 0.18);
+      width: 320px;
+      display: none;
+      animation: adminSlideIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      font-family: inherit;
+    }
+
+    @keyframes adminSlideIn {
+      from { opacity: 0; transform: translateY(-16px) scale(0.96); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    .admin-console-bar.active {
+      display: block !important;
+    }
+
+    .admin-console-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .admin-console-title {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 0.65rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: var(--accent-champagne);
+    }
+
+    .admin-exit-btn {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-size: 0.7rem;
+      cursor: pointer;
+      padding: 3px 6px;
+      border-radius: 4px;
+      transition: color 0.2s ease;
+    }
+
+    .admin-exit-btn:hover {
+      color: #fff;
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .admin-toggle-row {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .admin-status-btn {
+      flex: 1;
+      padding: 10px;
+      border-radius: 9999px;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: all 0.25s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--text-secondary);
+    }
+
+    .admin-status-btn.btn-open.active {
+      background: rgba(37, 211, 102, 0.15);
+      border-color: #25D366;
+      color: #25D366;
+      box-shadow: 0 0 16px rgba(37, 211, 102, 0.35);
+    }
+
+    .admin-status-btn.btn-closed.active {
+      background: rgba(234, 179, 8, 0.15);
+      border-color: #EAB308;
+      color: #EAB308;
+      box-shadow: 0 0 16px rgba(234, 179, 8, 0.35);
+    }
+
+    .admin-select-label {
+      font-size: 0.58rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+      display: block;
+      font-weight: 600;
+    }
+
+    .admin-reason-select {
+      width: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: #fff;
+      font-size: 0.72rem;
+      padding: 8px 10px;
+      border-radius: 8px;
+      outline: none;
+      cursor: pointer;
+      font-family: inherit;
+      margin-bottom: 10px;
+    }
+
+    .admin-toast-feedback {
+      font-size: 0.62rem;
+      color: var(--accent-champagne);
+      letter-spacing: 0.1em;
+      text-align: center;
+      padding-top: 4px;
+      font-weight: 600;
+    }
+
+    /* Customer Closed Notice in Booking Form */
+    .closed-booking-notice {
+      display: none;
+      background: rgba(234, 179, 8, 0.08);
+      border: 1px solid rgba(234, 179, 8, 0.3);
+      border-radius: 12px;
+      padding: 16px 20px;
+      margin-bottom: 24px;
+      font-size: 0.84rem;
+      line-height: 1.55;
+      color: #FDE047;
+    }
+
+    .closed-booking-notice.visible {
+      display: block !important;
+    }
+
+    .closed-booking-notice strong {
+      color: #fff;
+      display: block;
+      margin-bottom: 4px;
+      font-size: 0.88rem;
+    }
+
+    .waitlist-wa-btn {
+      display: none;
+      margin-top: 14px;
+      width: 100%;
+      padding: 14px;
+      background: rgba(37, 211, 102, 0.12);
+      border: 1px solid rgba(37, 211, 102, 0.4);
+      color: #25D366;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      border-radius: 9999px;
+      text-decoration: none;
+      text-align: center;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 16px rgba(37, 211, 102, 0.15);
+    }
+
+    .waitlist-wa-btn.visible {
+      display: flex !important;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .waitlist-wa-btn:hover {
+      background: #25D366;
+      color: #050505;
+      box-shadow: 0 6px 24px rgba(37, 211, 102, 0.4);
+    }
+
+    @media (max-width: 768px) {
+      .admin-console-bar {
+        top: auto;
+        bottom: 90px;
+        right: 16px;
+        left: 16px;
+        width: auto;
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Option B: Studio Admin Floating Console (Active only when ?admin=true or unlocked) -->
+  <div class="admin-console-bar" id="adminConsoleBar">
+    <div class="admin-console-header">
+      <div class="admin-console-title">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <span>Studio Admin Console</span>
+      </div>
+      <button class="admin-exit-btn" onclick="exitAdminView()" title="Exit Admin View">Exit &times;</button>
+    </div>
+
+    <div class="admin-toggle-row">
+      <button class="admin-status-btn btn-open active" id="adminBtnOpen" onclick="setStudioBookingStatus('OPEN')">
+        <span>&bull;</span> OPEN
+      </button>
+      <button class="admin-status-btn btn-closed" id="adminBtnClosed" onclick="setStudioBookingStatus('CLOSED')">
+        <span>&bull;</span> CLOSED
+      </button>
+    </div>
+
+    <label class="admin-select-label" for="adminReasonDropdown">Customer Live Notice:</label>
+    <select class="admin-reason-select" id="adminReasonDropdown" onchange="setStudioBookingReason(this.value)">
+      <option value="Daily 10:00 AM – 8:00 PM • OMR Studio">Default: Daily 10 AM – 8 PM • OMR Studio</option>
+      <option value="All 4 Bays Full • Next Slots Tomorrow">Fully Booked: Next Slots Tomorrow</option>
+      <option value="Limited Slots Remaining Today • Advance Reserve">Surge: Limited Slots Remaining</option>
+      <option value="Closed for Studio Detailing • Reopening Tomorrow">Private Detailing in Progress</option>
+      <option value="Holiday Hours • Inquire WhatsApp">Holiday Hours • Inquire WhatsApp</option>
+    </select>
+
+    <div class="admin-toast-feedback" id="adminToastMsg">Live status synced to all visitors</div>
+  </div>
+
+
+  <!-- Minimal Preloader Bar -->
+  <div class="preload-progress-bar" id="preloadBar"></div>
+
+  <!-- Ultra-Fresh Luxury Floating Glass Island Navbar -->
+  <header class="navbar-wrapper">
+    <nav class="navbar" id="navbar">
+      <a href="#home" class="nav-brand">
+        <svg class="brand-emblem" viewBox="0 0 24 24" fill="none">
+          <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="#C8A96B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M2 17L12 22L22 17" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" opacity="0.8"/>
+          <path d="M2 12L12 17L22 12" stroke="#C8A96B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" opacity="0.5"/>
+        </svg>
+        <div class="brand-text-group">
+          <div class="brand-title">CARZ<span>ZAP</span></div>
+          <span class="brand-badge">OMR STUDIO</span>
+        </div>
+      </a>
+
+      <ul class="nav-menu">
+        <li><a href="#home" class="nav-link active">HOME</a></li>
+        <li><a href="#services" class="nav-link">SERVICES</a></li>
+        <li><a href="#booking" class="nav-link">BOOK APPOINTMENT</a></li>
+        <li><a href="#contact" class="nav-link">CONTACT</a></li>
+        <li><a href="gallery.html" class="nav-link">GALLERY</a></li>
+        <li><a href="about.html" class="nav-link">ABOUT US</a></li>
+      </ul>
+
+      <a href="#booking" class="nav-cta">
+        <span>Reserve Studio</span>
+        <svg class="cta-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+      </a>
+    </nav>
+  </header>
+
+  <!-- Right-Side Cinematic HUD Tracker & Laser Guide -->
+  <div class="hud-tracker" id="hudTracker">
+    <div class="hud-track-line">
+      <div class="hud-track-fill" id="hudTrackFill"></div>
+    </div>
+    <a href="#phase-1" class="hud-step active" data-phase="1">
+      <span class="hud-label">01 Intake</span>
+      <span class="hud-dot"></span>
+    </a>
+    <a href="#phase-2" class="hud-step" data-phase="2">
+      <span class="hud-label">02 Decon</span>
+      <span class="hud-dot"></span>
+    </a>
+    <a href="#phase-3" class="hud-step" data-phase="3">
+      <span class="hud-label">03 Polish</span>
+      <span class="hud-dot"></span>
+    </a>
+    <a href="#phase-4" class="hud-step" data-phase="4">
+      <span class="hud-label">04 Ceramic</span>
+      <span class="hud-dot"></span>
+    </a>
+    <a href="#phase-5" class="hud-step" data-phase="5">
+      <span class="hud-label">05 PPF</span>
+      <span class="hud-dot"></span>
+    </a>
+    <a href="#phase-6" class="hud-step" data-phase="6">
+      <span class="hud-label">06 Cockpit</span>
+      <span class="hud-dot"></span>
+    </a>
+    <a href="#phase-7" class="hud-step" data-phase="7">
+      <span class="hud-label">07 Handover</span>
+      <span class="hud-dot"></span>
+    </a>
+  </div>
+
+  <!-- Floating WhatsApp Studio Action Button -->
+  <a href="https://wa.me/919514332266?text=Hi%20Carzzap%2C%20I%27d%20like%20to%20inquire%20about%20car%20detailing%20and%20protection%20services." 
+     class="whatsapp-fab" 
+     target="_blank" 
+     rel="noopener" 
+     aria-label="Chat with Carzzap Detailing Studio on WhatsApp">
+    <div class="whatsapp-pulse"></div>
+    <svg class="whatsapp-icon" viewBox="0 0 24 24">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/>
+    </svg>
+    <span class="whatsapp-tooltip">Chat on WhatsApp &bull; <span>Instant Quote</span></span>
+  </a>
+
+  <!-- Pinned Central Cinematic HTML5 Canvas Playback Stage -->
+  <div class="viewport-stage" id="viewportStage">
+    <div class="studio-lighting lighting-phase-1" id="studioLighting"></div>
+    <div class="canvas-container">
+      <canvas id="sequenceCanvas"></canvas>
+      <div class="canvas-vignette"></div>
+
+          </div>
+  </div>
+
+  <!-- Admin-Changeable Booking Status Pill (Click with Alt/Shift or tap to toggle status) -->
+  <div class="booking-status-pill" id="bookingStatusPill" title="Click to view studio booking hours (Admin: Shift+Click to toggle)">
+    <span class="booking-pulse-dot" id="bookingDot"></span>
+    <span class="booking-status-text" id="bookingText">BOOKINGS OPEN</span>
+    <span class="booking-status-sep">&bull;</span>
+    <span class="booking-status-detail" id="bookingDetail">Daily 10:00 AM &ndash; 8:00 PM &bull; OMR Studio</span>
+  </div>
+
+  <!-- Scroll-Linked Editorial Storytelling Narrative (500vh) -->
+  <div class="scroll-container" id="home">
+
+    <!-- PHASE 01 — INTAKE (Frames 001 - 035) -->
+    <section class="phase-section active" id="phase-1">
+      <div class="phase-content">
+        <div class="phase-tag">Phase 01 &bull; Diagnostic Intake</div>
+        <h1 class="phase-headline">
+          <span class="headline-line">Every flaw</span>
+          <span class="headline-line"><span class="headline-highlight">tells a story.</span></span>
+        </h1>
+        <p class="phase-copy">Before machine polishes touch clear coat, our studio conducts a surgical 30-point intake audit. Paint depth gauges measure lacquer in microns (120–140µm baseline) to detect transport marring, micro-scratches, and high-velocity road fallout from Chennai highways.</p>
+        <div class="technical-badges">
+          <span class="tech-pill">Clear Coat Depth Scan</span>
+          <span class="tech-pill">30-Point Surface Audit</span>
+          <span class="tech-pill">OMR &bull; Kottivakkam Studio</span>
+          <span class="tech-pill">Paint Gauge Inspection</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- PHASE 02 — DECONTAMINATION (Frames 036 - 075) -->
+    <section class="phase-section" id="phase-2">
+      <div class="phase-content">
+        <div class="phase-tag">Phase 02 &bull; Chemical Unmasking</div>
+        <h2 class="phase-headline">
+          <span class="headline-line">Purity before</span>
+          <span class="headline-line"><span class="headline-highlight">performance.</span></span>
+        </h2>
+        <p class="phase-copy">Component separation exposes deep contaminants. High-density pH-neutral snow foam lifts grit without friction, while acid-free wheel cleaners dissolve metallic brake dust from calipers and inner wheel barrels. Stripped back to virgin factory clear coat.</p>
+        <div class="technical-badges">
+          <span class="tech-pill">pH-Neutral Snow Foam</span>
+          <span class="tech-pill">Iron Chemical Dissolution</span>
+          <span class="tech-pill">Wheel Barrel & Caliper Clean</span>
+          <span class="tech-pill">Underbody Pressure Flush</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- PHASE 03 — PAINT CORRECTION (Frames 076 - 115) -->
+    <section class="phase-section" id="phase-3">
+      <div class="phase-content">
+        <div class="phase-tag">Phase 03 &bull; Paint Correction</div>
+        <h2 class="phase-headline">
+          <span class="headline-line">Clear coat is finite.</span>
+          <span class="headline-line"><span class="headline-highlight">Treat it like diamond.</span></span>
+        </h2>
+        <p class="phase-copy">Multi-stage dual-action machine compounding levels microscopic clear-coat hills and valleys. We safely remove 2 to 3 microns of oxidized lacquer to eradicate swirl marks, bird-dropping etching, and holograms—recovering optical depth without compromising panel thickness.</p>
+        <div class="technical-badges">
+          <span class="tech-pill">Dual-Action Rotary Surgery</span>
+          <span class="tech-pill">Swirl & Hologram Eradication</span>
+          <span class="tech-pill">Zero-Filler Compounding</span>
+          <span class="tech-pill">True 94+ GU Specular Depth</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- PHASE 04 — CERAMIC 9H (Frames 116 - 155) -->
+    <section class="phase-section" id="phase-4">
+      <div class="phase-content">
+        <div class="phase-tag">Phase 04 &bull; Ceramic 9H Nanomatrix</div>
+        <h2 class="phase-headline">
+          <span class="headline-line">Liquid glass,</span>
+          <span class="headline-line"><span class="headline-highlight">hardened for the road.</span></span>
+        </h2>
+        <p class="phase-copy">True 9H ceramic nanomatrix chemically bonds at the sub-molecular lattice, creating an impermeable hydrophobic barrier (&gt;115&deg; water contact angle). Engineered specifically to shield against Chennai's corrosive coastal salinity, acid rain, and brutal 40&deg;C tropical UV.</p>
+        <div class="technical-badges">
+          <span class="tech-pill">9H Sub-Molecular Matrix</span>
+          <span class="tech-pill">&gt;115&deg; Hydrophobic Angle</span>
+          <span class="tech-pill">Coastal Salt & UV Shield</span>
+          <span class="tech-pill">Candy Hard-Gloss Finish</span>
+        </div>
+        <div class="warranty-selector">
+          <button class="warranty-btn" onclick="selectWarranty(this, '1 Year')">1 Year</button>
+          <button class="warranty-btn active" onclick="selectWarranty(this, '3 Years')">3 Years (Recommended)</button>
+          <button class="warranty-btn" onclick="selectWarranty(this, '5 Years')">5 Years Matrix</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- PHASE 05 — PPF ARMOR (Frames 156 - 190) -->
+    <section class="phase-section" id="phase-5">
+      <div class="phase-content">
+        <div class="phase-tag">Phase 05 &bull; Aliphatic TPU PPF</div>
+        <h2 class="phase-headline">
+          <span class="headline-line">Self-healing defense</span>
+          <span class="headline-line"><span class="headline-highlight">against the open road.</span></span>
+        </h2>
+        <p class="phase-copy">Optical-grade 8mil aliphatic thermoplastic polyurethane (TPU) computer-cut to factory panel dimensions. Features an elastomeric self-healing topcoat that instantly erases swirl marks under sunlight, absorbing gravel impact, stone chips, and high-speed highway debris.</p>
+        <div class="technical-badges">
+          <span class="tech-pill">8mil Optical Aliphatic TPU</span>
+          <span class="tech-pill">Instant Heat Self-Healing</span>
+          <span class="tech-pill">Wrapped Edges & Zero Gaps</span>
+          <span class="tech-pill">High-Impact Stone Chip Shield</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- PHASE 06 — COCKPIT & ENGINE (Frames 191 - 220) -->
+    <section class="phase-section" id="phase-6">
+      <div class="phase-content">
+        <div class="phase-tag">Phase 06 &bull; Cockpit & Mechanical Care</div>
+        <h2 class="phase-headline">
+          <span class="headline-line">Every surface.</span>
+          <span class="headline-line"><span class="headline-highlight">Considered.</span></span>
+        </h2>
+        <p class="phase-copy">Total mechanical and cockpit devotion. Delicate aniline leather is cleansed and nourished with matte pH-balanced balms; cockpit screens receive anti-static oleophobic protection; high-temperature ceramic shields insulate brake calipers and the rear powertrain.</p>
+        <div class="technical-badges">
+          <span class="tech-pill">Aniline Leather Hydration</span>
+          <span class="tech-pill">Anti-Static Matte Cockpit</span>
+          <span class="tech-pill">High-Temp Engine Ceramic</span>
+          <span class="tech-pill">Crystal Rain Glass Repellent</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- PHASE 07 — SHOWROOM HANDOVER (Frames 221 - 240) -->
+    <section class="phase-section" id="phase-7">
+      <div class="phase-content">
+        <div class="phase-tag">Phase 07 &bull; Showroom Handover</div>
+        <h2 class="phase-headline">
+          <span class="headline-line">Not just clean.</span>
+          <span class="headline-line"><span class="headline-highlight">Carzzap perfected.</span></span>
+        </h2>
+        <p class="phase-copy">As the components re-unify into a flawless silhouette, the vehicle undergoes final inspection under 5000K daylight simulation arrays. The result is pure optical symmetry—a mirror finish calibrated for Chennai's streets with certified gloss readings exceeding 99.8 GU.</p>
+        <div class="technical-badges">
+          <span class="tech-pill">5000K Daylight Audit</span>
+          <span class="tech-pill">99.8 GU Certified Specular Gloss</span>
+          <span class="tech-pill">Digital Inspection Certificate</span>
+          <span class="tech-pill">White-Glove Handover</span>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+
+  
+
+  
+
+
+
+
+  <!-- PHASE 08 — FINAL HERO BANNER & BOOKING STUDIO (94 - 100%) -->
+  
+  <!-- ==========================================
+       SECTION: SERVICES AVAILABLE (#services) - From carzzap.in
+       ========================================== -->
+    <!-- ==========================================
+       SECTION: SERVICES AVAILABLE (#services) - From carzzap.in
+       ========================================== -->
+  <section id="services" class="editorial-section">
+    <div class="section-header">
+      <span class="section-badge">Carzzap Detailing Studio &bull; Services</span>
+      <h2 class="section-headline">
+        Premium Automotive Detailing.<br><span>Showroom Perfection.</span>
+      </h2>
+      <p class="section-subtext">
+        Explore our authentic studio treatments available right here in Kottivakkam, OMR. Engineered to protect, rejuvenate, and make your car shine like new.
+      </p>
+    </div>
+
+    <div class="services-grid">
+      <!-- 1. Ceramic Coating with 1, 3, 5 Year Warranty -->
+      <div class="service-card">
+        <div>
+          <span class="service-badge">1, 3, 5 Yr Warranty</span>
+          <h3 class="service-title">Ceramic Coating & Surface Protection</h3>
+          <p class="service-desc">
+            Ultra-hydrophobic ceramic nanomatrix applied to exterior painted surfaces, delivering an irresistible high-gloss mirror shine and long-term environmental protection.
+          </p>
+          <ul class="service-features">
+            <li class="service-feature">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>1, 3, and 5-Year Certified Warranty Packages</span>
+            </li>
+            <li class="service-feature">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Interior & Exterior Deep Cleaning Included</span>
+            </li>
+            <li class="service-feature">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Dashboard & Door Pad Shiner + Tyre Shiner</span>
+            </li>
+          </ul>
+          <div class="service-tech-pills">
+            <span class="service-pill">1, 3, 5 Yr Warranty</span>
+            <span class="service-pill">High Hydrophobic</span>
+            <span class="service-pill">Mirror Gloss</span>
+          </div>
+        </div>
+        <div class="service-actions">
+          <a href="#booking" class="service-btn-primary">Book Ceramic</a>
+          <a href="https://wa.me/919514332266?text=Hi%20Carzzap%2C%20I%20am%20interested%20in%20Ceramic%20Coating%20with%20warranty." class="service-btn-wa" target="_blank" aria-label="WhatsApp Inquiry">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- 2. Paint Protection Film (PPF) -->
+      <div class="service-card">
+        <div>
+          <span class="service-badge">Stone Chip Armor</span>
+          <h3 class="service-title">Paint Protection Film (PPF)</h3>
+          <p class="service-desc">
+            High-strength transparent polyurethane film shielding your paint against road stones, rock chips, harsh scratches, and highway debris.
+          </p>
+          <ul class="service-features">
+            <li class="service-feature">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Self-Healing Topcoat Under Natural Heat</span>
+            </li>
+            <li class="service-feature">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Manufacturer Backed Comprehensive Warranty</span>
+            </li>
+            <li class="service-feature">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Impact Bumper Kit or Full Body Installation</span>
+            </li>
+          </ul>
+          <div class="service-tech-pills">
+            <span class="service-pill">PPF with Warranty</span>
+            <span class="service-pill">Self-Healing</span>
+            <span class="service-pill">Anti-Scratch</span>
+          </div>
+        </div>
+        <div class="service-actions">
+          <a href="#booking" class="service-btn-primary">Book PPF Armor</a>
+          <a href="https://wa.me/919514332266?text=Hi%20Carzzap%2C%20I%20am%20interested%20in%20Paint%20Protection%20Film%20(PPF)." class="service-btn-wa" target="_blank" aria-label="WhatsApp Inquiry">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- 3. Lift Ramp Under Chassis 360° & Foam Wash -->
+      <div class="service-card">
+        <div>
+          <span class="service-badge">Deep Decontamination</span>
+          <h3 class="service-title">Foam Wash & 360° Lift Ramp Wash</h3>
+          <p class="service-desc">
+            Complete vehicle decontamination using thick pH-neutral snow foam wash and heavy-duty hydraulic lift ramp for 360° thorough underbody chassis cleaning.
+          </p>
+          <ul class="service-features">
+            <li class="service-feature">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Exterior High-Density Foam Wash</span>
+            </li>
+            <li class="service-feature">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Hydraulic Lift Ramp Under Chassis 360° Wash</span>
+            </li>
+            <li class="service-feature">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Wheel Well & Suspension Mud/Salt Flushing</span>
+            </li>
+          </ul>
+          <div class="service-tech-pills">
+            <span class="service-pill">Lift Ramp Wash</span>
+            <span class="service-pill">360° Detailed</span>
+            <span class="service-pill">Chassis Cleanse</span>
+          </div>
+        </div>
+        <div class="service-actions">
+          <a href="#booking" class="service-btn-primary">Book Foam Wash</a>
+          <a href="https://wa.me/919514332266?text=Hi%20Carzzap%2C%20I%20would%20like%20to%20book%20a%20Lift%20Ramp%20360%20Foam%20Wash." class="service-btn-wa" target="_blank" aria-label="WhatsApp Inquiry">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- 4. Paint Polishing & Scratch Correction -->
+      <div class="service-card">
+        <div>
+          <span class="service-badge">Paint Restoration</span>
+          <h3 class="service-title">Paint Polishing & Scratch Correction</h3>
+          <p class="service-desc">
+            Professional machine polishing to remove spiderweb swirl marks, buffer holograms, surface oxidation, and restore true deep optical clarity.
+          </p>
+          <ul class="service-features">
+            <li class="service-feature">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Multi-Stage Rotary & Dual-Action Correction</span>
+            </li>
+            <li class="service-feature">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Wax Polishing & Synthetic Gloss Sealants</span>
+            </li>
+            <li class="service-feature">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Micron Clearcoat Depth Preservation Guarantee</span>
+            </li>
+          </ul>
+          <div class="service-tech-pills">
+            <span class="service-pill">Swirl Removal</span>
+            <span class="service-pill">Wax Polishing</span>
+            <span class="service-pill">Deep Reflection</span>
+          </div>
+        </div>
+        <div class="service-actions">
+          <a href="#booking" class="service-btn-primary">Book Polishing</a>
+          <a href="https://wa.me/919514332266?text=Hi%20Carzzap%2C%20I%20am%20interested%20in%20Paint%20Polishing%20%26%20Correction." class="service-btn-wa" target="_blank" aria-label="WhatsApp Inquiry">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- 5. Engine Room & Underbody Coating & Glass Repellent -->
+      <div class="service-card">
+        <div>
+          <span class="service-badge">Mechanical & Coastal Armor</span>
+          <h3 class="service-title">Engine Room, Underbody & Glass Repellent</h3>
+          <p class="service-desc">
+            Complete protection against Chennai coastal salinity. Decontaminates and dresses the engine bay, applies underbody rust inhibitors, and coats glass for hydrophobic rain visibility.
+          </p>
+          <ul class="service-features">
+            <li class="service-feature">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Engine Room Deep Decon & Dressing</span>
+            </li>
+            <li class="service-feature">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Under Body Anti-Corrosion Coating</span>
+            </li>
+            <li class="service-feature">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Windshield & Glass Hydrophobic Rain Repellent</span>
+            </li>
+          </ul>
+          <div class="service-tech-pills">
+            <span class="service-pill">Engine Room</span>
+            <span class="service-pill">Underbody Armor</span>
+            <span class="service-pill">Glass Repellent</span>
+          </div>
+        </div>
+        <div class="service-actions">
+          <a href="#booking" class="service-btn-primary">Book Package</a>
+          <a href="https://wa.me/919514332266?text=Hi%20Carzzap%2C%20I%20am%20interested%20in%20Engine%20Room%20%26%20Underbody%20Coating." class="service-btn-wa" target="_blank" aria-label="WhatsApp Inquiry">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="deepdive-banner">
+      <a href="services.html" class="deepdive-btn">
+        <span>View Full Services & Treatment Catalog</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       SECTION: BOOK APPOINTMENT (#booking)
+       ========================================== -->
+  <section class="final-stage-section" id="booking">
+    <div class="final-hero-banner">
+      <h2 class="final-headline">
+        Keep driving.<br>
+        <span>We'll keep it shining.</span>
+      </h2>
+      <p class="final-subtext">Premium automotive detailing and surface protection, right here on OMR, Chennai.</p>
+    </div>
+
+    <!-- Clean Editorial Appointment Booking Card -->
+    <div class="booking-card">
+      <div class="form-header">
+        <h3 class="form-title">Reserve Your Studio Session</h3>
+        <p class="form-subtitle">Carzzap Detailing Studio &bull; OMR</p>
+      </div>
+
+            <!-- Closed Notice Banner (Dynamically shown when status is CLOSED) -->
+      <div class="closed-booking-notice" id="closedBookingNotice">
+        <strong>⚠️ Today's Detailing Bays Are Operating at Maximum Capacity</strong>
+        We are currently accepting advance appointments for tomorrow onwards. Select a future date below or join our WhatsApp priority cancellation waitlist for immediate assistance.
+      </div>
+
+      <form id="bookingForm" onsubmit="handleBookingSubmit(event)">
+        <div class="form-grid">
+          <div class="input-group">
+            <label class="input-label" for="userName">Full Name</label>
+            <input type="text" id="userName" class="form-input" placeholder="e.g. Rahul Sundaram" required>
+          </div>
+
+          <div class="input-group">
+            <label class="input-label" for="carModel">Vehicle Make & Model</label>
+            <input type="text" id="carModel" class="form-input" placeholder="e.g. Porsche 911 GT3 / BMW M3 / Thar" required>
+          </div>
+
+          <div class="input-group">
+            <label class="input-label" for="userPhone">Phone Number</label>
+            <input type="tel" id="userPhone" class="form-input" placeholder="+91 98765 43210" required>
+          </div>
+
+          <div class="input-group">
+            <label class="input-label" for="userEmail">Email Address</label>
+            <input type="email" id="userEmail" class="form-input" placeholder="name@domain.com" required>
+          </div>
+
+          <div class="input-group full-width">
+            <label class="input-label" for="bookDate">Preferred Appointment Date</label>
+            <input type="date" id="bookDate" class="form-input" required>
+          </div>
+
+          <div class="input-group full-width">
+            <label class="input-label" for="userMessage">Detailing Treatments Required</label>
+            <textarea id="userMessage" class="form-input" placeholder="e.g. Full Paint Correction + 3-Year Ceramic Coating, Interior Deep Clean"></textarea>
+          </div>
+
+          <div class="full-width">
+            <button type="submit" class="btn-submit">Submit Reservation Request</button>
+          </div>
+        </div>
+      
+          <div class="full-width">
+            <a href="https://wa.me/919514332266?text=Hi%20Carzzap%2C%20I%20saw%20today%27s%20detailing%20slots%20are%20full.%20Please%20add%20me%20to%20today%27s%20priority%20cancellation%20waitlist." 
+               target="_blank" 
+               class="waitlist-wa-btn" 
+               id="waitlistWaBtn">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+              <span>Join Today's Priority Cancellation Waitlist</span>
+            </a>
+          </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       SECTION: CONTACT US (#contact)
+       ========================================== -->
+  <section id="contact" class="editorial-section">
+    <div class="section-header">
+      <span class="section-badge">Studio Location &bull; OMR Chennai</span>
+      <h2 class="section-headline">
+        Visit Our Studio.<br><span>Speak With a Specialist.</span>
+      </h2>
+      <p class="section-subtext">
+        Conveniently situated along Rajiv Gandhi Salai (OMR) in Kottivakkam. Bring your vehicle in for a complimentary computerized paint depth analysis under our 5000K daylight array.
+      </p>
+    </div>
+
+    <div class="contact-grid">
+      <!-- Studio Details Card -->
+      <div class="contact-details-card">
+        <div>
+          <h3 class="contact-title">Carzzap Detailing Studio</h3>
+          <div class="contact-info-list">
+            <div class="contact-item">
+              <div class="contact-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              </div>
+              <div>
+                <div class="contact-label">Studio Address</div>
+                <div class="contact-value">
+                  4/991-A, Kamaraj Street, Kottivakkam,<br>
+                  Rajiv Gandhi Salai (OMR), Chennai &ndash; 600096
+                </div>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <div class="contact-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              </div>
+              <div>
+                <div class="contact-label">Operational Hours</div>
+                <div class="contact-value">
+                  Monday &ndash; Sunday: <strong>9:00 AM &ndash; 8:00 PM</strong><br>
+                  <span style="color: var(--accent-champagne); font-size: 0.82rem;">(Daily Studio Access & Consultation)</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <div class="contact-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              </div>
+              <div>
+                <div class="contact-label">Direct Studio Phone</div>
+                <div class="contact-value">
+                  <a href="tel:+919514332266">+91 95143 32266</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <div class="contact-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              </div>
+              <div>
+                <div class="contact-label">Electronic Mail</div>
+                <div class="contact-value">
+                  <a href="mailto:concierge@carzzap.com">concierge@carzzap.com</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-actions">
+          <a href="tel:+919514332266" class="contact-cta-btn contact-cta-call">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <span>Call Studio</span>
+          </a>
+          <a href="https://wa.me/919514332266?text=Hi%20Carzzap%2C%20I%20would%20like%20to%20visit%20the%20Kottivakkam%20studio%20for%20a%20detailing%20consultation." target="_blank" class="contact-cta-btn contact-cta-wa">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+            <span>WhatsApp</span>
+          </a>
+          <a href="https://maps.google.com/?q=Carzzap+Detailing+Studio+4/991-A+Kamaraj+Street+Kottivakkam+Chennai" target="_blank" class="contact-cta-btn" style="background: rgba(255,255,255,0.06); color: #fff; border: 1px solid rgba(255,255,255,0.15);">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
+            <span>Get Directions</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Interactive Google Maps Card -->
+      <div class="contact-map-card">
+        <iframe 
+          class="map-frame" 
+          src="https://maps.google.com/maps?q=4/991-A,%20Kamaraj%20Street,%20Kottivakkam,%20Chennai%20600096&t=&z=15&ie=UTF8&iwloc=&output=embed" 
+          loading="lazy" 
+          title="Carzzap Detailing Studio Location Map">
+        </iframe>
+        <div class="map-overlay-badge">
+          <div class="map-badge-text">
+            <strong>Carzzap Detailing Studio &bull; OMR</strong>
+            5 mins from Thiruvanmiyur Signal &bull; 10 mins from Adyar
+          </div>
+          <a href="https://maps.google.com/?q=Carzzap+Detailing+Studio+4/991-A+Kamaraj+Street+Kottivakkam+Chennai" target="_blank" class="map-badge-link">
+            Directions &rarr;
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="deepdive-banner" style="margin-top: 40px;">
+      <a href="contact.html" class="deepdive-btn">
+        <span>Open Dedicated Contact & Driving Route Guide</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+
+    <!-- Integrated Studio Closing Bar (Website ends cleanly here) -->
+    <div style="margin-top: 60px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.08); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px; font-size: 0.72rem; color: var(--text-muted);">
+      <div>&copy; 2026 CARZZAP DETAILING STUDIO. 4/991-A Kamaraj St, Kottivakkam, OMR, Chennai &ndash; 600096.</div>
+      <div style="color: var(--accent-champagne); font-weight: 600; letter-spacing: 0.12em;">PRECISION &bull; PROTECTION &bull; PERFECTION</div>
+    </div>
+  </section>
+
+  <!-- High-Performance Canvas Image Sequence & Scrollytelling Engine -->
+  <script>
+    const FRAME_COUNT = 240;
+    const canvas = document.getElementById('sequenceCanvas');
+    const ctx = canvas.getContext('2d', { alpha: false });
+    const preloadBar = document.getElementById('preloadBar');
+    const navbar = document.getElementById('navbar');
+    const sections = document.querySelectorAll('.phase-section');
+    const hudSteps = document.querySelectorAll('.hud-step');
+
+    const frames = [];
+    let loadedImagesCount = 0;
+    let targetFrame = 1;
+    let currentFrame = 1;
+    let lastDrawnImg = null;
+
+    // Helper: format zero-padded frame number
+    function formatFrameNumber(num) {
+      return String(num).padStart(3, '0');
+    }
+
+    function getFrameUrl(num) {
+      return 'imgs/ezgif-frame-' + formatFrameNumber(num) + '.jpg';
+    }
+
+    // Set canvas dimensions and redraw
+    function resizeCanvas() {
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      canvas.width = window.innerWidth * dpr;
+      canvas.height = window.innerHeight * dpr;
+      renderCurrentFrame();
+    }
+    window.addEventListener('resize', resizeCanvas);
+
+    // High-performance image render on canvas with 'contain' aspect ratio
+    function renderFrameOnCanvas(img) {
+      if (!img || !img.complete || img.naturalWidth === 0) return;
+
+      const cW = canvas.width;
+      const cH = canvas.height;
+      const iW = img.naturalWidth;
+      const iH = img.naturalHeight;
+
+      const cRatio = cW / cH;
+      const iRatio = iW / iH;
+
+      let drawW, drawH, drawX, drawY;
+
+      if (iRatio > cRatio) {
+        drawW = cW;
+        drawH = cW / iRatio;
+        drawX = 0;
+        drawY = (cH - drawH) / 2;
+      } else {
+        drawH = cH;
+        drawW = cH * iRatio;
+        drawX = (cW - drawW) / 2;
+        drawY = 0;
+      }
+
+      // On wide screens (> 1024px), shift vehicle slightly right to avoid card occlusion
+      if (window.innerWidth > 1024) {
+        const extraSpace = (cW - drawW) * 0.35;
+        if (extraSpace > 0) {
+          drawX += extraSpace;
+        }
+      }
+
+      // Fill background matching studio void
+      ctx.fillStyle = '#050505';
+      ctx.fillRect(0, 0, cW, cH);
+
+      ctx.drawImage(img, drawX, drawY, drawW, drawH);
+
+      }
+
+    function renderCurrentFrame() {
+      const index = Math.min(Math.max(1, Math.round(currentFrame)), FRAME_COUNT);
+      let img = frames[index];
+
+      // Fallback to nearest loaded frame if current frame is still loading
+      if (!img || !img.complete || img.naturalWidth === 0) {
+        for (let offset = 1; offset < 40; offset++) {
+          if (frames[index - offset] && frames[index - offset].complete && frames[index - offset].naturalWidth > 0) {
+            img = frames[index - offset];
+            break;
+          }
+          if (frames[index + offset] && frames[index + offset].complete && frames[index + offset].naturalWidth > 0) {
+            img = frames[index + offset];
+            break;
+          }
+        }
+      }
+
+      // Retain last rendered frame to eliminate blank canvas drop
+      if (!img || !img.complete || img.naturalWidth === 0) {
+        img = lastDrawnImg;
+      }
+
+      if (img && img.complete && img.naturalWidth > 0) {
+        renderFrameOnCanvas(img);
+        lastDrawnImg = img;
+      }
+    }
+
+    // Smooth lerping animation loop (60fps) with standing fallback
+    function animLoop() {
+      const diff = targetFrame - currentFrame;
+      if (Math.abs(diff) > 0.01) {
+        currentFrame += diff * 0.18;
+        renderCurrentFrame();
+      } else if (!lastDrawnImg && frames[1] && frames[1].complete && frames[1].naturalWidth > 0) {
+        renderCurrentFrame();
+      }
+
+      requestAnimationFrame(animLoop);
+    }
+
+    // Robust preloading: loads first 30 frames synchronously into array, handles file:/// instant load
+    function preloadFrames() {
+      for (let i = 1; i <= 30; i++) {
+        const img = new Image();
+        img.onload = () => {
+          loadedImagesCount++;
+          if (i === 1 || !lastDrawnImg || Math.round(currentFrame) === i) {
+            renderCurrentFrame();
+          }
+        };
+        img.onerror = () => { loadedImagesCount++; };
+        img.src = getFrameUrl(i);
+        frames[i] = img;
+
+        // Immediate check if loaded synchronously from disk (file:/// protocol)
+        if (img.complete && img.naturalWidth > 0) {
+          loadedImagesCount++;
+          if (i === 1 || !lastDrawnImg) {
+            renderCurrentFrame();
+          }
+        }
+      }
+
+      // Progressively load remaining frames
+      setTimeout(() => {
+        for (let i = 31; i <= FRAME_COUNT; i++) {
+          const img = new Image();
+          img.onload = () => {
+            loadedImagesCount++;
+            if (preloadBar) {
+              const pct = (loadedImagesCount / FRAME_COUNT) * 100;
+              preloadBar.style.width = pct + '%';
+              if (loadedImagesCount >= FRAME_COUNT - 5) {
+                preloadBar.style.opacity = '0';
+              }
+            }
+          };
+          img.onerror = () => { loadedImagesCount++; };
+          img.src = getFrameUrl(i);
+          frames[i] = img;
+        }
+      }, 50);
+    }
+
+    // One-Click Smooth Scroll for all in-page links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        if (!href || href === '#') return;
+        const target = document.querySelector(href);
+        if (target) {
+          e.preventDefault();
+          const navOffset = 82;
+          const targetPos = target.getBoundingClientRect().top + window.pageYOffset - navOffset;
+          window.scrollTo({
+            top: Math.max(0, targetPos),
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+
+    // High-Precision Scroll Handler: Cuts extra display past #home & manages HUDs
+    function onScroll() {
+      const scrollY = window.scrollY;
+      const scrollContainer = document.querySelector('.scroll-container');
+      const hudTracker = document.getElementById('hudTracker');
+      const bookingPill = document.getElementById('bookingStatusPill');
+      const viewportStage = document.getElementById('viewportStage');
+      const hudTrackFill = document.getElementById('hudTrackFill');
+      
+      if (scrollContainer) {
+        const containerRect = scrollContainer.getBoundingClientRect();
+        const containerTop = window.scrollY + containerRect.top;
+        const containerHeight = scrollContainer.offsetHeight - window.innerHeight;
+        const scrollInContainer = window.scrollY - containerTop;
+        
+        let progress = 0;
+        if (containerHeight > 0) {
+          progress = Math.min(Math.max(scrollInContainer / containerHeight, 0), 1);
+        }
+        
+        targetFrame = Math.min(Math.max(1, Math.floor(progress * (FRAME_COUNT - 1)) + 1), FRAME_COUNT);
+
+        if (hudTrackFill) {
+          hudTrackFill.style.height = (progress * 100) + '%';
+        }
+
+        // CUT EXTRA DISPLAY & AUTO-HIDE:
+        // When user scrolls past Home sequence into #services / #booking / #contact:
+        // Hide viewportStage completely so car canvas NEVER peeks through after contact!
+        if (containerRect.bottom <= 0) {
+          if (viewportStage) viewportStage.style.display = 'none';
+        } else {
+          if (viewportStage) viewportStage.style.display = 'flex';
+        }
+
+        // Hide HUD tracker & booking status pill when past Phase 7
+        if (containerRect.bottom <= window.innerHeight * 0.4) {
+          if (hudTracker) hudTracker.classList.add('hidden');
+          if (bookingPill) bookingPill.classList.add('hidden');
+        } else {
+          if (hudTracker) hudTracker.classList.remove('hidden');
+          if (bookingPill) bookingPill.classList.remove('hidden');
+        }
+      }
+
+      // Glass Navbar Blur
+      if (scrollY > 60) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+
+      // Phase Card Detection (during sequence)
+      sections.forEach((sec, idx) => {
+        const rect = sec.getBoundingClientRect();
+        if (rect.top <= window.innerHeight * 0.55 && rect.bottom >= window.innerHeight * 0.45) {
+          sections.forEach(s => s.classList.remove('active'));
+          sec.classList.add('active');
+
+          hudSteps.forEach(h => h.classList.remove('active'));
+          if (hudSteps[idx]) hudSteps[idx].classList.add('active');
+        }
+      });
+
+      // 4-Section Scrollspy for Home page (#home -> #services -> #booking -> #contact)
+      const navSections = [
+        { id: '#contact', el: document.getElementById('contact') },
+        { id: '#booking', el: document.getElementById('booking') },
+        { id: '#services', el: document.getElementById('services') },
+        { id: '#home', el: document.getElementById('home') }
+      ];
+
+      let activeNavId = '#home';
+      for (const item of navSections) {
+        if (item.el) {
+          const r = item.el.getBoundingClientRect();
+          if (r.top <= window.innerHeight * 0.45 && r.bottom >= 0) {
+            activeNavId = item.id;
+            break;
+          }
+        }
+      }
+
+      document.querySelectorAll('.nav-menu .nav-link').forEach(link => {
+        const href = link.getAttribute('href');
+        if (href === activeNavId) {
+          link.classList.add('active');
+        } else if (href && href.startsWith('#')) {
+          link.classList.remove('active');
+        }
+      });
+    }
+
+    // =========================================================================
+    
+        // =========================================================================
+    // OPTION B: STUDIO ADMIN CONTROLLER & CUSTOMER FLOW DIFFERENTIATION
+    // =========================================================================
+    const urlParams = new URLSearchParams(window.location.search);
+    const isDirectAdminUrl = urlParams.get('admin') === 'true';
+
+    // Check persistent admin mode
+    if (isDirectAdminUrl) {
+      localStorage.setItem('carzzap_admin_mode', 'true');
+    }
+    const isAdminActive = isDirectAdminUrl || localStorage.getItem('carzzap_admin_mode') === 'true';
+
+    window.STUDIO_STATE = {
+      status: localStorage.getItem('carzzap_studio_booking_status') || 'OPEN',
+      reason: localStorage.getItem('carzzap_studio_booking_reason') || 'Daily 10:00 AM – 8:00 PM • OMR Studio'
+    };
+
+    function applyStudioBookingState() {
+      const pill = document.getElementById('bookingStatusPill');
+      const text = document.getElementById('bookingStatusText') || document.getElementById('bookingText');
+      const detail = document.getElementById('bookingDetail');
+      const bookDateInput = document.getElementById('bookDate');
+      const closedNotice = document.getElementById('closedBookingNotice');
+      const waitlistBtn = document.getElementById('waitlistWaBtn');
+      const submitBtn = document.querySelector('#bookingForm .btn-submit');
+      const adminBar = document.getElementById('adminConsoleBar');
+      const btnOpen = document.getElementById('adminBtnOpen');
+      const btnClosed = document.getElementById('adminBtnClosed');
+      const reasonDropdown = document.getElementById('adminReasonDropdown');
+
+      const isClosed = window.STUDIO_STATE.status === 'CLOSED';
+
+      // 1. Update Customer Pill
+      if (pill && text) {
+        if (isClosed) {
+          pill.classList.add('closed');
+          text.textContent = 'BOOKINGS CLOSED';
+          if (detail) detail.textContent = window.STUDIO_STATE.reason;
+        } else {
+          pill.classList.remove('closed');
+          text.textContent = 'BOOKINGS OPEN';
+          if (detail) detail.textContent = window.STUDIO_STATE.reason;
+        }
+      }
+
+      // 2. Update Customer Booking Form Experience
+      const today = new Date();
+      const tomorrow = new Date();
+      tomorrow.setDate(today.getDate() + 1);
+      const todayStr = today.toISOString().split('T')[0];
+      const tomorrowStr = tomorrow.toISOString().split('T')[0];
+
+      if (bookDateInput) {
+        if (isClosed) {
+          bookDateInput.min = tomorrowStr;
+          if (bookDateInput.value === todayStr) {
+            bookDateInput.value = tomorrowStr;
+          }
+        } else {
+          bookDateInput.min = todayStr;
+        }
+      }
+
+      if (closedNotice) {
+        if (isClosed) {
+          closedNotice.classList.add('visible');
+        } else {
+          closedNotice.classList.remove('visible');
+        }
+      }
+
+      if (waitlistBtn) {
+        if (isClosed) {
+          waitlistBtn.classList.add('visible');
+        } else {
+          waitlistBtn.classList.remove('visible');
+        }
+      }
+
+      if (submitBtn) {
+        if (isClosed) {
+          submitBtn.textContent = 'Book Priority Slot for Tomorrow Onwards';
+        } else {
+          submitBtn.textContent = 'Submit Reservation Request';
+        }
+      }
+
+      // 3. Update Admin Console UI (If Admin)
+      if (adminBar) {
+        if (isAdminActive) {
+          adminBar.classList.add('active');
+          if (btnOpen && btnClosed) {
+            if (isClosed) {
+              btnClosed.classList.add('active');
+              btnOpen.classList.remove('active');
+            } else {
+              btnOpen.classList.add('active');
+              btnClosed.classList.remove('active');
+            }
+          }
+          if (reasonDropdown) {
+            reasonDropdown.value = window.STUDIO_STATE.reason;
+          }
+        } else {
+          adminBar.classList.remove('active');
+        }
+      }
+    }
+
+    // Public Admin Functions
+    window.setStudioBookingStatus = function(newStatus) {
+      window.STUDIO_STATE.status = newStatus.toUpperCase();
+      localStorage.setItem('carzzap_studio_booking_status', window.STUDIO_STATE.status);
+      
+      // Auto-set default reason based on status
+      if (window.STUDIO_STATE.status === 'CLOSED' && window.STUDIO_STATE.reason.includes('Daily 10')) {
+        window.STUDIO_STATE.reason = 'All 4 Bays Full • Next Slots Tomorrow';
+        localStorage.setItem('carzzap_studio_booking_reason', window.STUDIO_STATE.reason);
+      } else if (window.STUDIO_STATE.status === 'OPEN' && window.STUDIO_STATE.reason.includes('Full')) {
+        window.STUDIO_STATE.reason = 'Daily 10:00 AM – 8:00 PM • OMR Studio';
+        localStorage.setItem('carzzap_studio_booking_reason', window.STUDIO_STATE.reason);
+      }
+
+      applyStudioBookingState();
+
+      const toast = document.getElementById('adminToastMsg');
+      if (toast) {
+        toast.textContent = '✔ Status set to ' + window.STUDIO_STATE.status + ' for all visitors';
+        setTimeout(() => { toast.textContent = 'Live status synced to all visitors'; }, 3000);
+      }
+    };
+
+    window.setStudioBookingReason = function(newReason) {
+      window.STUDIO_STATE.reason = newReason;
+      localStorage.setItem('carzzap_studio_booking_reason', newReason);
+      applyStudioBookingState();
+
+      const toast = document.getElementById('adminToastMsg');
+      if (toast) {
+        toast.textContent = '✔ Notice updated for all visitors';
+        setTimeout(() => { toast.textContent = 'Live status synced to all visitors'; }, 3000);
+      }
+    };
+
+    window.exitAdminView = function() {
+      localStorage.removeItem('carzzap_admin_mode');
+      window.location.href = 'index.html';
+    };
+
+    // Customer click on pill simply scrolls to #booking
+    const pillElement = document.getElementById('bookingStatusPill');
+    if (pillElement) {
+      pillElement.addEventListener('click', () => {
+        const bSec = document.getElementById('booking');
+        if (bSec) bSec.scrollIntoView({ behavior: 'smooth' });
+      });
+    }
+
+    // Booking Submission Handler (Popup-Safe + Direct Fallback)
+    function handleBookingSubmit(e) {
+      e.preventDefault();
+      const name = document.getElementById('userName') ? document.getElementById('userName').value : '';
+      const car = document.getElementById('carModel') ? document.getElementById('carModel').value : '';
+      const date = document.getElementById('bookDate') ? document.getElementById('bookDate').value : '';
+      const phone = document.getElementById('userPhone') ? document.getElementById('userPhone').value : '';
+      const email = document.getElementById('userEmail') ? document.getElementById('userEmail').value : '';
+      const msg = document.getElementById('userMessage') ? document.getElementById('userMessage').value : '';
+
+      const whatsappMsg = 'Hi Carzzap Detailing Studio! I would like to book a studio session.%0A%0A*Name:* ' + encodeURIComponent(name) + '%0A*Vehicle:* ' + encodeURIComponent(car) + '%0A*Preferred Date:* ' + encodeURIComponent(date) + '%0A*Phone:* ' + encodeURIComponent(phone) + '%0A*Email:* ' + encodeURIComponent(email) + '%0A*Requirements:* ' + encodeURIComponent(msg || 'Full Studio Detailing & Protection Consultation');
+      const waUrl = 'https://wa.me/919514332266?text=' + whatsappMsg;
+
+      try {
+        window.open(waUrl, '_blank');
+      } catch (err) {
+        window.location.href = waUrl;
+      }
+    }
+
+    const bookingForm = document.getElementById('bookingForm');
+    if (bookingForm) {
+      bookingForm.addEventListener('submit', handleBookingSubmit);
+    }
+
+    // Minimum Date Constraint: prevent selecting past dates
+    const bookDateInput = document.getElementById('bookDate');
+    if (bookDateInput) {
+      const today = new Date().toISOString().split('T')[0];
+      bookDateInput.min = today;
+    }
+
+    // Initialize immediately
+    resizeCanvas();
+    preloadFrames();
+    requestAnimationFrame(animLoop);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('orientationchange', () => setTimeout(resizeCanvas, 150));
+    window.addEventListener('load', () => {
+      resizeCanvas();
+      renderCurrentFrame();
+    });
+    onScroll();
+
+    applyStudioBookingState();
+  </script>
+</body>
+</html>

@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CARZZAP DETAILING STUDIO | SERVICES | OMR, Chennai</title>
+  <meta name="description" content="Ultra-premium automotive detailing, 9H/10H ceramic coating & PPF studio in OMR Kottivakkam, Chennai. Precision surface restoration.">
+  <meta name="theme-color" content="#050505">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none'%3E%3Cpath d='M12 2L2 7L12 12L22 7L12 2Z' stroke='%23C8A96B' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M2 17L12 22L22 17' stroke='%23FFFFFF' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round' opacity='0.8'/%3E%3Cpath d='M2 12L12 17L22 12' stroke='%23C8A96B' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round' opacity='0.5'/%3E%3C/svg%3E">
+  <style>
+    @font-face {
+      font-family: 'Audiowide';
+      src: url('Audiowide-Regular.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    :root {
+      --bg-void: #050505;
+      --bg-secondary: #0A0A0C;
+      --bg-graphite: #111214;
+      --bg-surface: #1A1B1E;
+      --text-primary: #FFFFFF;
+      --text-secondary: rgba(255, 255, 255, 0.65);
+      --text-muted: rgba(255, 255, 255, 0.42);
+      --accent-champagne: #C8A96B;
+      --accent-silver: #E2E8F0;
+      --glass-bg: rgba(10, 10, 14, 0.78);
+      --glass-border: rgba(255, 255, 255, 0.09);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: var(--bg-void);
+      color: var(--text-primary);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+
+    /* Ultra-Fresh Luxury Floating Glass Island Navbar */
+    .navbar-wrapper {
+      position: fixed;
+      top: 14px;
+      left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      z-index: 1000;
+      padding: 0 16px;
+      pointer-events: none;
+    }
+
+    .navbar {
+      width: 100%;
+      max-width: 1160px;
+      height: 58px;
+      background: rgba(10, 10, 14, 0.85);
+      backdrop-filter: blur(28px) saturate(190%);
+      -webkit-backdrop-filter: blur(28px) saturate(190%);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 9999px;
+      padding: 0 8px 0 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.65), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+      pointer-events: auto;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: #fff;
+      flex-shrink: 0;
+    }
+
+    .brand-emblem {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+      filter: drop-shadow(0 0 8px rgba(200, 169, 107, 0.4));
+    }
+
+    .brand-text-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .brand-title {
+      font-family: 'Audiowide', sans-serif;
+      font-size: 1.02rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: #fff;
+      white-space: nowrap;
+    }
+
+    .brand-title span {
+      color: var(--accent-champagne);
+    }
+
+    .brand-badge {
+      font-size: 0.48rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: var(--accent-champagne);
+      background: rgba(200, 169, 107, 0.12);
+      border: 1px solid rgba(200, 169, 107, 0.28);
+      padding: 3px 8px;
+      border-radius: 9999px;
+      white-space: nowrap;
+    }
+
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 3px;
+      list-style: none;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      padding: 3px;
+      border-radius: 9999px;
+    }
+
+    .nav-link {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      transition: all 0.25s ease;
+      font-weight: 500;
+      padding: 6px 12px;
+      border-radius: 9999px;
+      white-space: nowrap;
+      display: block;
+    }
+
+    .nav-link:hover {
+      color: #fff;
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .nav-link.active {
+      color: #fff;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(200, 169, 107, 0.35);
+      box-shadow: 0 0 16px rgba(200, 169, 107, 0.2);
+      font-weight: 600;
+    }
+
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 20px;
+      font-size: 0.68rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #050505;
+      background: linear-gradient(135deg, #FFFFFF 0%, #DFCA9B 40%, #C8A96B 100%);
+      border: none;
+      border-radius: 9999px;
+      text-decoration: none;
+      font-weight: 700;
+      white-space: nowrap;
+      flex-shrink: 0;
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 4px 18px rgba(200, 169, 107, 0.35);
+    }
+
+    .nav-cta:hover {
+      transform: scale(1.04);
+      box-shadow: 0 6px 28px rgba(200, 169, 107, 0.55);
+    }
+
+    /* Page Hero Banner */
+    .page-hero {
+      padding: 150px 8vw 70px;
+      text-align: center;
+      position: relative;
+      background: radial-gradient(ellipse at 50% 20%, rgba(200, 169, 107, 0.12) 0%, transparent 70%);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .hero-badge {
+      display: inline-block;
+      font-size: 0.62rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: var(--accent-champagne);
+      background: rgba(200, 169, 107, 0.12);
+      border: 1px solid rgba(200, 169, 107, 0.3);
+      padding: 6px 16px;
+      border-radius: 9999px;
+      margin-bottom: 22px;
+    }
+
+    .hero-title {
+      font-family: 'Audiowide', sans-serif;
+      font-size: clamp(2.4rem, 5vw, 4.2rem);
+      line-height: 1.12;
+      text-transform: uppercase;
+      color: #fff;
+      margin-bottom: 20px;
+      letter-spacing: -0.01em;
+    }
+
+    .hero-title span {
+      background: linear-gradient(180deg, #FFFFFF 0%, var(--accent-champagne) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-desc {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      max-width: 720px;
+      margin: 0 auto;
+      font-weight: 300;
+      line-height: 1.65;
+    }
+
+    /* Content Containers */
+    .page-container {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 80px 8vw 100px;
+    }
+
+    /* Floating WhatsApp Button */
+    .whatsapp-fab {
+      position: fixed;
+      bottom: 74px; right: 46px;
+      z-index: 999;
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      background: #25D366;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
+      text-decoration: none;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .whatsapp-fab:hover {
+      transform: scale(1.1);
+      box-shadow: 0 14px 35px rgba(37, 211, 102, 0.6);
+    }
+
+    /* Shared Footer */
+    .studio-footer {
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      background: #020202;
+      padding: 60px 8vw;
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    @media (max-width: 960px) {
+      .navbar {
+        height: auto;
+        padding: 8px 12px;
+        flex-wrap: wrap;
+        border-radius: 20px;
+      }
+      .nav-menu {
+        overflow-x: auto;
+        width: 100%;
+        order: 3;
+        padding: 4px 6px;
+      }
+      .page-hero {
+        padding: 120px 6vw 50px;
+      }
+    }
+  
+    /* Shared Responsive Grids & Media Queries */
+    .responsive-grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .responsive-grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    .service-detail-card {
+      background: rgba(12,13,17,0.85);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 24px;
+      padding: 44px;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 40px;
+      align-items: center;
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .service-detail-card:hover {
+      border-color: rgba(200, 169, 107, 0.35);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.7);
+      transform: translateY(-4px);
+    }
+
+    .contact-layout-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 48px;
+    }
+
+    @media (max-width: 960px) {
+      .responsive-grid-2,
+      .responsive-grid-3,
+      .service-detail-card,
+      .contact-layout-grid {
+        grid-template-columns: 1fr !important;
+        gap: 32px !important;
+      }
+      .page-container {
+        padding: 50px 6vw 80px;
+      }
+      .service-detail-card {
+        padding: 32px 24px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .page-hero {
+        padding: 110px 5vw 45px;
+      }
+      .hero-title {
+        font-size: 2rem;
+      }
+      .hero-desc {
+        font-size: 0.95rem;
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Ultra-Fresh Luxury Floating Glass Island Navbar -->
+  <header class="navbar-wrapper">
+    <nav class="navbar" id="navbar">
+      <a href="index.html" class="nav-brand">
+        <svg class="brand-emblem" viewBox="0 0 24 24" fill="none">
+          <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="#C8A96B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M2 17L12 22L22 17" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" opacity="0.8"/>
+          <path d="M2 12L12 17L22 12" stroke="#C8A96B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" opacity="0.5"/>
+        </svg>
+        <div class="brand-text-group">
+          <div class="brand-title">CARZ<span>ZAP</span></div>
+          <span class="brand-badge">OMR STUDIO</span>
+        </div>
+      </a>
+
+      <ul class="nav-menu">
+        <li><a href="index.html#home" class="nav-link">HOME</a></li>
+        <li><a href="services.html" class="nav-link active">SERVICES</a></li>
+        <li><a href="index.html#booking" class="nav-link">BOOK APPOINTMENT</a></li>
+        <li><a href="contact.html" class="nav-link">CONTACT</a></li>
+        <li><a href="gallery.html" class="nav-link">GALLERY</a></li>
+        <li><a href="about.html" class="nav-link">ABOUT US</a></li>
+      </ul>
+
+      <a href="index.html#booking" class="nav-cta">
+        <span>Reserve Studio</span>
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </nav>
+  </header>
+
+  <a href="https://wa.me/919514332266?text=Hi%20Carzzap%2C%20I%20would%20like%20to%20inquire%20about%20detailing%20services." class="whatsapp-fab" target="_blank" aria-label="WhatsApp">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="#FFFFFF"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+  </a>
+
+  <section class="page-hero">
+    <span class="hero-badge">Bespoke Treatments &bull; Technical Catalog</span>
+    <h1 class="hero-title">Surface Engineering.<br><span>Molecular Protection.</span></h1>
+    <p class="hero-desc">
+      Explore our comprehensive catalog of automotive surface preservation treatments. From self-healing aliphatic TPU to 10H sub-molecular graphene ceramic coatings.
+    </p>
+  </section>
+
+  
+  <main class="page-container">
+    <div style="display: flex; flex-direction: column; gap: 40px; margin-bottom: 80px;">
+      
+      <!-- 1. Ceramic Coating with 1, 3, 5 Year Warranty -->
+      <div class="service-detail-card">
+        <div>
+          <span style="font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent-champagne); font-weight: 700;">1, 3, 5 Year Warranty</span>
+          <h2 style="font-family: 'Audiowide', sans-serif; font-size: 1.6rem; color: #fff; margin: 10px 0 16px;">Ceramic Coating Systems</h2>
+          <p style="color: var(--text-secondary); margin-bottom: 20px; font-weight: 300; line-height: 1.65;">
+            Our premier ceramic coatings provide unmatched hydrophobic protection, intense gloss, and defense against chemical staining, environmental fallout, and coastal UV fading.
+          </p>
+          <ul style="list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px; font-size: 0.9rem; color: rgba(255,255,255,0.85);">
+            <li>&bull; Certified with <strong>1, 3, and 5 Year Warranty</strong></li>
+            <li>&bull; Interior & Exterior Deep Cleaning Included</li>
+            <li>&bull; Dashboard & Door Pad Shiner Conditioning</li>
+            <li>&bull; Premium Tyre Shiner & Dressing</li>
+          </ul>
+          <a href="index.html#booking" class="nav-cta">Reserve Ceramic Coating</a>
+        </div>
+        <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 20px; padding: 36px 30px; text-align: center;">
+          <div style="font-family: 'Audiowide', sans-serif; font-size: 2.6rem; color: var(--accent-champagne); margin-bottom: 6px;">1 &bull; 3 &bull; 5</div>
+          <div style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.16em; color: var(--text-muted); margin-bottom: 16px;">Year Warranty Tiers</div>
+          <div style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.5;">Includes complete surface decontamination, deep machine polish, and certified warranty certificate.</div>
+        </div>
+      </div>
+
+      <!-- 2. Paint Protection Film (PPF) -->
+      <div class="service-detail-card">
+        <div>
+          <span style="font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent-champagne); font-weight: 700;">Physical Self-Healing Armor</span>
+          <h2 style="font-family: 'Audiowide', sans-serif; font-size: 1.6rem; color: #fff; margin: 10px 0 16px;">Paint Protection Film (PPF) with Warranty</h2>
+          <p style="color: var(--text-secondary); margin-bottom: 20px; font-weight: 300; line-height: 1.65;">
+            Top-tier optically clear protective urethane film that defends original factory clearcoat against rock chips, gravel strikes, flying debris, and accidental key scratches.
+          </p>
+          <ul style="list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px; font-size: 0.9rem; color: rgba(255,255,255,0.85);">
+            <li>&bull; Instant Self-Healing Properties under Sunlight/Heat</li>
+            <li>&bull; Non-Yellowing Optical Urethane with UV Protection</li>
+            <li>&bull; Complete Manufacturer Backed Warranty</li>
+            <li>&bull; Edge-Wrapped Clean Finish on All Panels</li>
+          </ul>
+          <a href="index.html#booking" class="nav-cta">Reserve PPF Armor</a>
+        </div>
+        <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 20px; padding: 36px 30px; text-align: center;">
+          <div style="font-family: 'Audiowide', sans-serif; font-size: 2.6rem; color: var(--accent-champagne); margin-bottom: 6px;">PPF</div>
+          <div style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.16em; color: var(--text-muted); margin-bottom: 16px;">Paint Protection Film</div>
+          <div style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.5;">Available in Front Bumper / High-Impact package or Full Vehicle invisible coverage.</div>
+        </div>
+      </div>
+
+      <!-- 3. Foam Wash & 360° Lift Ramp Wash -->
+      <div class="service-detail-card">
+        <div>
+          <span style="font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent-champagne); font-weight: 700;">Deep Clean & Chassis Care</span>
+          <h2 style="font-family: 'Audiowide', sans-serif; font-size: 1.6rem; color: #fff; margin: 10px 0 16px;">Exterior Foam Wash & 360° Lift Ramp Wash</h2>
+          <p style="color: var(--text-secondary); margin-bottom: 20px; font-weight: 300; line-height: 1.65;">
+            Our dedicated hydraulic lift ramp allows a complete 360° detailed undercarriage wash, removing salt, sludge, and mud deposits essential for Chennai coastal longevity.
+          </p>
+          <ul style="list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px; font-size: 0.9rem; color: rgba(255,255,255,0.85);">
+            <li>&bull; Thick pH-Neutral Snow Foam Exterior Wash</li>
+            <li>&bull; Lift Ramp Under Chassis 360° Detailed Wash</li>
+            <li>&bull; High-Pressure Wheel Well & Caliper Rinse</li>
+            <li>&bull; Scratch-Free Microfiber Touch Dry & Glass Clean</li>
+          </ul>
+          <a href="index.html#booking" class="nav-cta">Book Foam Wash</a>
+        </div>
+        <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 20px; padding: 36px 30px; text-align: center;">
+          <div style="font-family: 'Audiowide', sans-serif; font-size: 2.6rem; color: var(--accent-champagne); margin-bottom: 6px;">360&deg;</div>
+          <div style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.16em; color: var(--text-muted); margin-bottom: 16px;">Hydraulic Lift Ramp</div>
+          <div style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.5;">Full underbody inspection and high-pressure saline and road muck flushing.</div>
+        </div>
+      </div>
+
+      <!-- 4. Paint Polishing & Wax Polishing -->
+      <div class="service-detail-card">
+        <div>
+          <span style="font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent-champagne); font-weight: 700;">Surface Restoration</span>
+          <h2 style="font-family: 'Audiowide', sans-serif; font-size: 1.6rem; color: #fff; margin: 10px 0 16px;">Paint Polishing, Protection & Waxing</h2>
+          <p style="color: var(--text-secondary); margin-bottom: 20px; font-weight: 300; line-height: 1.65;">
+            Surgical compound polishing to eliminate swirl marks, buffer holograms, and oxidation, followed by high-grade carnauba and synthetic wax sealing for rich gloss.
+          </p>
+          <ul style="list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px; font-size: 0.9rem; color: rgba(255,255,255,0.85);">
+            <li>&bull; Multi-Stage Dual Action Machine Polish</li>
+            <li>&bull; Deep Color Revival & Swirl Elimination</li>
+            <li>&bull; Wax Polishing & Synthetic Gloss Sealants</li>
+            <li>&bull; Paint Thickness Gauged for Zero Clearcoat Burn</li>
+          </ul>
+          <a href="index.html#booking" class="nav-cta">Book Paint Polishing</a>
+        </div>
+        <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 20px; padding: 36px 30px; text-align: center;">
+          <div style="font-family: 'Audiowide', sans-serif; font-size: 2.6rem; color: var(--accent-champagne); margin-bottom: 6px;">GLOSS</div>
+          <div style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.16em; color: var(--text-muted); margin-bottom: 16px;">Surgical Polishing</div>
+          <div style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.5;">Restores optical depth and mirror reflections on all automotive paint finishes.</div>
+        </div>
+      </div>
+
+      <!-- 5. Engine Room & Underbody Coating & Glass Repellent -->
+      <div class="service-detail-card">
+        <div>
+          <span style="font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent-champagne); font-weight: 700;">Mechanical & Coastal Armor</span>
+          <h2 style="font-family: 'Audiowide', sans-serif; font-size: 1.6rem; color: #fff; margin: 10px 0 16px;">Engine Room & Under Body Coating & Glass Repellent</h2>
+          <p style="color: var(--text-secondary); margin-bottom: 20px; font-weight: 300; line-height: 1.65;">
+            Essential treatments for vehicles navigating Chennai's coastal environment. Protects the chassis from rust, decontaminates the engine bay, and provides rain-repellent vision.
+          </p>
+          <ul style="list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px; font-size: 0.9rem; color: rgba(255,255,255,0.85);">
+            <li>&bull; Engine Room Deep Steam Decontamination & Dressing</li>
+            <li>&bull; Underbody Anti-Rust Protective Coating</li>
+            <li>&bull; Hydrophobic Windshield & Window Glass Repellent</li>
+            <li>&bull; Long-Lasting Coastal Salinity Defense</li>
+          </ul>
+          <a href="index.html#booking" class="nav-cta">Reserve Armor Package</a>
+        </div>
+        <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 20px; padding: 36px 30px; text-align: center;">
+          <div style="font-family: 'Audiowide', sans-serif; font-size: 2.6rem; color: var(--accent-champagne); margin-bottom: 6px;">SHIELD</div>
+          <div style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.16em; color: var(--text-muted); margin-bottom: 16px;">Coastal Protection</div>
+          <div style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.5;">Defends engine hoses, wiring, undercarriage metal, and provides hydrophobic rain repel.</div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Comprehensive Luxury Studio Footer -->
+  <footer class="studio-footer">
+    <div style="display: flex; justify-content: space-between; align-items: center; width: 100%; max-width: 1200px; margin: 0 auto; flex-wrap: wrap; gap: 20px;">
+      <div style="display: flex; align-items: center; gap: 12px;">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+          <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="#C8A96B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M2 17L12 22L22 17" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" opacity="0.8"/>
+          <path d="M2 12L12 17L22 12" stroke="#C8A96B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" opacity="0.5"/>
+        </svg>
+        <span style="font-family: 'Audiowide', sans-serif; font-size: 1.1rem; letter-spacing: 0.16em; color: #fff;">CARZ<span style="color: var(--accent-champagne);">ZAP</span></span>
+        <span style="font-size: 0.55rem; letter-spacing: 0.18em; color: var(--accent-champagne); background: rgba(200,169,107,0.12); padding: 3px 8px; border-radius: 9999px;">OMR STUDIO</span>
+      </div>
+
+      <div style="display: flex; gap: 24px; flex-wrap: wrap;">
+        <a href="index.html#home" style="color: var(--text-secondary); text-decoration: none; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase;">HOME</a>
+        <a href="services.html" style="color: var(--text-secondary); text-decoration: none; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase;">SERVICES</a>
+        <a href="index.html#booking" style="color: var(--text-secondary); text-decoration: none; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase;">BOOK APPOINTMENT</a>
+        <a href="contact.html" style="color: var(--text-secondary); text-decoration: none; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase;">CONTACT</a>
+        <a href="gallery.html" style="color: var(--text-secondary); text-decoration: none; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase;">GALLERY</a>
+        <a href="about.html" style="color: var(--text-secondary); text-decoration: none; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase;">ABOUT US</a>
+      </div>
+    </div>
+
+    <div style="display: flex; justify-content: space-between; align-items: center; width: 100%; max-width: 1200px; margin: 0 auto; flex-wrap: wrap; gap: 14px; font-size: 0.75rem; color: var(--text-muted); border-top: 1px solid rgba(255,255,255,0.06); padding-top: 24px;">
+      <div>&copy; 2026 CARZZAP DETAILING STUDIO. 4/991-A Kamaraj St, Kottivakkam, OMR, Chennai &ndash; 600096.</div>
+      <div style="color: var(--accent-champagne); font-weight: 500; letter-spacing: 0.1em;">PRECISION &bull; PROTECTION &bull; PERFECTION</div>
+    </div>
+  </footer>
+  <script>
+    // User Feature: Auto-redirect to home page when user clicks browser refresh
+    if (performance.getEntriesByType('navigation')[0]?.type === 'reload') {
+      window.location.href = 'index.html';
+    }
+  </script>
+</body>
+</html>

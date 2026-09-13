@@ -1,0 +1,336 @@
+                         if (appConfig.revalidate !== 0) {
+                                                var _workerResult_prerenderRoutes;
+                                                const isDynamic = isDynamicRoute(page);
+                                                const hasGenerateStaticParams = !!((_workerResult_prerenderRoutes = workerResult.prerenderRoutes) == null ? void 0 : _workerResult_prerenderRoutes.length);
+                                                if (config.output === "export" && isDynamic && !hasGenerateStaticParams) {
+                                                    throw new Error(`Page "${page}" is missing "generateStaticParams()" so it cannot be used with "output: export" config.`);
+                                                }
+                                                // Mark the app as static if:
+                                                // - It's not an interception route (these currently depend on request headers and cannot be computed at build)
+                                                // - It has no dynamic param
+                                                // - It doesn't have generateStaticParams but `dynamic` is set to
+                                                //   `error` or `force-static`
+                                                if (!isInterceptionRoute) {
+                                                    if (!isDynamic) {
+                                                        appStaticPaths.set(originalAppPath, [
+                                                            page
+                                                        ]);
+                                                        appStaticPathsEncoded.set(originalAppPath, [
+                                                            page
+                                                        ]);
+                                                        isStatic = true;
+                                                    } else if (isDynamic && !hasGenerateStaticParams && (appConfig.dynamic === "error" || appConfig.dynamic === "force-static")) {
+                                                        appStaticPaths.set(originalAppPath, []);
+                                                        appStaticPathsEncoded.set(originalAppPath, []);
+                                                        isStatic = true;
+                                                        isPPR = false;
+                                                    }
+                                                }
+                                            }
+                                            if (workerResult.prerenderFallback) {
+                                                // whether or not to allow requests for paths not
+                                                // returned from generateStaticParams
+                                                appDynamicParamPaths.add(originalAppPath);
+                                            }
+                                            appDefaultConfigs.set(originalAppPath, appConfig);
+                                            // Only generate the app prefetch rsc if the route is
+                                            // an app page.
+                                            if (!isStatic && !isAppRouteRoute(originalAppPath) && !isDynamicRoute(originalAppPath) && !isPPR && !isInterceptionRoute) {
+                                                appPrefetchPaths.set(originalAppPath, page);
+                                            }
+                                        }
+                                    } else {
+                                        if (isEdgeRuntime(pageRuntime)) {
+                                            if (workerResult.hasStaticProps) {
+                                                console.warn(`"getStaticProps" is not yet supported fully with "experimental-edge", detected on ${page}`);
+                                            }
+                                            // TODO: add handling for statically rendering edge
+                                            // pages and allow edge with Prerender outputs
+                                            workerResult.isStatic = false;
+                                            workerResult.hasStaticProps = false;
+                                        }
+                                        if (workerResult.isStatic === false && (workerResult.isHybridAmp || workerResult.isAmpOnly)) {
+                                            hasSsrAmpPages = true;
+                                        }
+                                        if (workerResult.isHybridAmp) {
+                                            isHybridAmp = true;
+                                            hybridAmpPages.add(page);
+                                        }
+                                        if (workerResult.isNextImageImported) {
+                                            isNextImageImported = true;
+                                        }
+                                        if (workerResult.hasStaticProps) {
+                                            ssgPages.add(page);
+                                            isSSG = true;
+                                            if (workerResult.prerenderRoutes && workerResult.encodedPrerenderRoutes) {
+                                                additionalSsgPaths.set(page, workerResult.prerenderRoutes);
+                                                additionalSsgPathsEncoded.set(page, workerResult.encodedPrerenderRoutes);
+                                                ssgPageRoutes = workerResult.prerenderRoutes;
+                                            }
+                                            if (workerResult.prerenderFallback === "blocking") {
+                                                ssgBlockingFallbackPages.add(page);
+                                            } else if (workerResult.prerenderFallback === true) {
+                                                ssgStaticFallbackPages.add(page);
+                                            }
+                                        } else if (workerResult.hasServerProps) {
+                                            serverPropsPages.add(page);
+                                        } else if (workerResult.isStatic && !isServerComponent && await customAppGetInitialPropsPromise === false) {
+                                            staticPages.add(page);
+                                            isStatic = true;
+                                        } else if (isServerComponent) {
+                                            // This is a static server component page that doesn't have
+                                            // gSP or gSSP. We still treat it as a SSG page.
+                                            ssgPages.add(page);
+                                            isSSG = true;
+                                        }
+                                        if (hasPages404 && page === "/404") {
+                                            if (!workerResult.isStatic && !workerResult.hasStaticProps) {
+                                                throw new Error(`\`pages/404\` ${STATIC_STATUS_PAGE_GET_INITIAL_PROPS_ERROR}`);
+                                            }
+                                            // we need to ensure the 404 lambda is present since we use
+                                            // it when _app has getInitialProps
+                                            if (await customAppGetInitialPropsPromise && !workerResult.hasStaticProps) {
+                                                staticPages.delete(page);
+                                            }
+                                        }
+                                        if (STATIC_STATUS_PAGES.includes(page) && !workerResult.isStatic && !workerResult.hasStaticProps) {
+                                            throw new Error(`\`pages${page}\` ${STATIC_STATUS_PAGE_GET_INITIAL_PROPS_ERROR}`);
+                                        }
+                                    }
+                                } catch (err) {
+                                    if (!isError(err) || err.message !== "INVALID_DEFAULT_EXPORT") throw err;
+                                    invalidPages.add(page);
+                                }
+                            }
+                            if (pageType === "app") {
+                                if (isSSG || isStatic) {
+                                    staticAppPagesCount++;
+                                } else {
+                                    serverAppPagesCount++;
+                                }
+                            }
+                        }
+                        pageInfos.set(page, {
+                            size,
+                            totalSize,
+                            isStatic,
+                            isSSG,
+                            isPPR,
+                            isHybridAmp,
+                            ssgPageRoutes,
+                            initialRevalidateSeconds: false,
+                            runtime: pageRuntime,
+                            pageDuration: undefined,
+                            ssgPageDurations: undefined,
+                            hasEmptyPrelude: undefined
+                        });
+                    });
+                }));
+                const errorPageResult = await errorPageStaticResult;
+                const nonStaticErrorPage = await errorPageHasCustomGetInitialProps || errorPageResult && errorPageResult.hasServerProps;
+                const returnValue = {
+                    customAppGetInitialProps: await customAppGetInitialPropsPromise,
+                    namedExports: await namedExportsPromise,
+                    isNextImageImported,
+                    hasSsrAmpPages,
+                    hasNonStaticErrorPage: nonStaticErrorPage
+                };
+                return returnValue;
+            });
+            if (postCompileSpinner) postCompileSpinner.stopAndPersist();
+            traceMemoryUsage("Finished collecting page data", nextBuildSpan);
+            if (customAppGetInitialProps) {
+                console.warn(bold(yellow(`Warning: `)) + yellow(`You have opted-out of Automatic Static Optimization due to \`getInitialProps\` in \`pages/_app\`. This does not opt-out pages with \`getStaticProps\``));
+                console.warn("Read more: https://nextjs.org/docs/messages/opt-out-auto-static-optimization\n");
+            }
+            if (!hasSsrAmpPages) {
+                requiredServerFilesManifest.ignore.push(path.relative(dir, path.join(path.dirname(require.resolve("next/dist/compiled/@ampproject/toolbox-optimizer")), "**/*")));
+            }
+            await writeFunctionsConfigManifest(distDir, functionsConfigManifest);
+            if (!isGenerateMode && config.outputFileTracing && !buildTracesPromise) {
+                buildTracesPromise = collectBuildTraces({
+                    dir,
+                    config,
+                    distDir,
+                    pageInfos,
+                    staticPages: [
+                        ...staticPages
+                    ],
+                    nextBuildSpan,
+                    hasSsrAmpPages,
+                    buildTraceContext,
+                    outputFileTracingRoot
+                }).catch((err)=>{
+                    console.error(err);
+                    process.exit(1);
+                });
+            }
+            if (serverPropsPages.size > 0 || ssgPages.size > 0) {
+                // We update the routes manifest after the build with the
+                // data routes since we can't determine these until after build
+                routesManifest.dataRoutes = getSortedRoutes([
+                    ...serverPropsPages,
+                    ...ssgPages
+                ]).map((page)=>{
+                    return buildDataRoute(page, buildId);
+                });
+                await writeManifest(routesManifestPath, routesManifest);
+            }
+            // Since custom _app.js can wrap the 404 page we have to opt-out of static optimization if it has getInitialProps
+            // Only export the static 404 when there is no /_error present
+            const useStaticPages404 = !customAppGetInitialProps && (!hasNonStaticErrorPage || hasPages404);
+            if (invalidPages.size > 0) {
+                const err = new Error(`Build optimization failed: found page${invalidPages.size === 1 ? "" : "s"} without a React Component as default export in \n${[
+                    ...invalidPages
+                ].map((pg)=>`pages${pg}`).join("\n")}\n\nSee https://nextjs.org/docs/messages/page-without-valid-component for more info.\n`);
+                err.code = "BUILD_OPTIMIZATION_FAILED";
+                throw err;
+            }
+            await writeBuildId(distDir, buildId);
+            if (config.experimental.optimizeCss) {
+                const globOrig = require("next/dist/compiled/glob");
+                const cssFilePaths = await new Promise((resolve, reject)=>{
+                    globOrig("**/*.css", {
+                        cwd: path.join(distDir, "static")
+                    }, (err, files)=>{
+                        if (err) {
+                            return reject(err);
+                        }
+                        resolve(files);
+                    });
+                });
+                requiredServerFilesManifest.files.push(...cssFilePaths.map((filePath)=>path.join(config.distDir, "static", filePath)));
+            }
+            const features = [
+                {
+                    featureName: "experimental/optimizeCss",
+                    invocationCount: config.experimental.optimizeCss ? 1 : 0
+                },
+                {
+                    featureName: "experimental/nextScriptWorkers",
+                    invocationCount: config.experimental.nextScriptWorkers ? 1 : 0
+                },
+                {
+                    featureName: "optimizeFonts",
+                    invocationCount: config.optimizeFonts ? 1 : 0
+                },
+                {
+                    featureName: "experimental/ppr",
+                    invocationCount: config.experimental.ppr ? 1 : 0
+                }
+            ];
+            telemetry.record(features.map((feature)=>{
+                return {
+                    eventName: EVENT_BUILD_FEATURE_USAGE,
+                    payload: feature
+                };
+            }));
+            await writeRequiredServerFilesManifest(distDir, requiredServerFilesManifest);
+            const middlewareManifest = await readManifest(path.join(distDir, SERVER_DIRECTORY, MIDDLEWARE_MANIFEST));
+            const finalPrerenderRoutes = {};
+            const finalDynamicRoutes = {};
+            const tbdPrerenderRoutes = [];
+            let ssgNotFoundPaths = [];
+            const { i18n } = config;
+            const usedStaticStatusPages = STATIC_STATUS_PAGES.filter((page)=>mappedPages[page] && mappedPages[page].startsWith("private-next-pages"));
+            usedStaticStatusPages.forEach((page)=>{
+                if (!ssgPages.has(page) && !customAppGetInitialProps) {
+                    staticPages.add(page);
+                }
+            });
+            const hasPages500 = usedStaticStatusPages.includes("/500");
+            const useDefaultStatic500 = !hasPages500 && !hasNonStaticErrorPage && !customAppGetInitialProps;
+            const combinedPages = [
+                ...staticPages,
+                ...ssgPages
+            ];
+            const isApp404Static = appStaticPaths.has(UNDERSCORE_NOT_FOUND_ROUTE_ENTRY);
+            const hasStaticApp404 = hasApp404 && isApp404Static;
+            // we need to trigger automatic exporting when we have
+            // - static 404/500
+            // - getStaticProps paths
+            // - experimental app is enabled
+            if (!isCompileMode && (combinedPages.length > 0 || useStaticPages404 || useDefaultStatic500 || appDir)) {
+                const staticGenerationSpan = nextBuildSpan.traceChild("static-generation");
+                await staticGenerationSpan.traceAsyncFn(async ()=>{
+                    detectConflictingPaths([
+                        ...combinedPages,
+                        ...pageKeys.pages.filter((page)=>!combinedPages.includes(page))
+                    ], ssgPages, additionalSsgPaths);
+                    const exportApp = require("../export").default;
+                    const exportConfig = {
+                        ...config,
+                        // Default map will be the collection of automatic statically exported
+                        // pages and incremental pages.
+                        // n.b. we cannot handle this above in combinedPages because the dynamic
+                        // page must be in the `pages` array, but not in the mapping.
+                        exportPathMap: (defaultMap)=>{
+                            // Dynamically routed pages should be prerendered to be used as
+                            // a client-side skeleton (fallback) while data is being fetched.
+                            // This ensures the end-user never sees a 500 or slow response from the
+                            // server.
+                            //
+                            // Note: prerendering disables automatic static optimization.
+                            ssgPages.forEach((page)=>{
+                                if (isDynamicRoute(page)) {
+                                    tbdPrerenderRoutes.push(page);
+                                    if (ssgStaticFallbackPages.has(page)) {
+                                        // Override the rendering for the dynamic page to be treated as a
+                                        // fallback render.
+                                        if (i18n) {
+                                            defaultMap[`/${i18n.defaultLocale}${page}`] = {
+                                                page,
+                                                query: {
+                                                    __nextFallback: "true"
+                                                }
+                                            };
+                                        } else {
+                                            defaultMap[page] = {
+                                                page,
+                                                query: {
+                                                    __nextFallback: "true"
+                                                }
+                                            };
+                                        }
+                                    } else {
+                                        // Remove dynamically routed pages from the default path map when
+                                        // fallback behavior is disabled.
+                                        delete defaultMap[page];
+                                    }
+                                }
+                            });
+                            // Append the "well-known" routes we should prerender for, e.g. blog
+                            // post slugs.
+                            additionalSsgPaths.forEach((routes, page)=>{
+                                const encodedRoutes = additionalSsgPathsEncoded.get(page);
+                                routes.forEach((route, routeIdx)=>{
+                                    defaultMap[route] = {
+                                        page,
+                                        query: {
+                                            __nextSsgPath: encodedRoutes == null ? void 0 : encodedRoutes[routeIdx]
+                                        }
+                                    };
+                                });
+                            });
+                            if (useStaticPages404) {
+                                defaultMap["/404"] = {
+                                    page: hasPages404 ? "/404" : "/_error"
+                                };
+                            }
+                            if (useDefaultStatic500) {
+                                defaultMap["/500"] = {
+                                    page: "/_error"
+                                };
+                            }
+                            // TODO: output manifest specific to app paths and their
+                            // revalidate periods and dynamicParams settings
+                            appStaticPaths.forEach((routes, originalAppPath)=>{
+                                const encodedRoutes = appStaticPathsEncoded.get(originalAppPath);
+                                const appConfig = appDefaultConfigs.get(originalAppPath) || {};
+                                routes.forEach((route, routeIdx)=>{
+                                    defaultMap[route] = {
+                                        page: originalAppPath,
+                                        query: {
+                                            __nextSsgPath: encodedRoutes == null ? void 0 : encodedRoutes[routeIdx]
+                                        },
+                                        _isDynamicError: appConfig.dynamic 

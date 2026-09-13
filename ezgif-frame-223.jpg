@@ -1,0 +1,382 @@
+         pagePaths: pagePaths.filter((i)=>typeof i === "string"),
+                    pagesDir: this.pagesDir
+                }));
+            const entrypoints = await webpackConfigSpan.traceChild("create-entrypoints").traceAsyncFn(()=>(0, _entries.createEntrypoints)({
+                    appDir: this.appDir,
+                    buildId: this.buildId,
+                    config: this.config,
+                    envFiles: [],
+                    isDev: true,
+                    pages: this.pagesMapping,
+                    pagesDir: this.pagesDir,
+                    previewMode: this.previewProps,
+                    rootDir: this.dir,
+                    pageExtensions: this.config.pageExtensions
+                }));
+            const commonWebpackOptions = {
+                dev: true,
+                buildId: this.buildId,
+                encryptionKey: this.encryptionKey,
+                config: this.config,
+                pagesDir: this.pagesDir,
+                rewrites: this.rewrites,
+                originalRewrites: this.config._originalRewrites,
+                originalRedirects: this.config._originalRedirects,
+                runWebpackSpan: this.hotReloaderSpan,
+                appDir: this.appDir
+            };
+            return webpackConfigSpan.traceChild("generate-webpack-config").traceAsyncFn(async ()=>{
+                const info = await (0, _webpackconfig.loadProjectInfo)({
+                    dir: this.dir,
+                    config: commonWebpackOptions.config,
+                    dev: true
+                });
+                return Promise.all([
+                    // order is important here
+                    (0, _webpackconfig.default)(this.dir, {
+                        ...commonWebpackOptions,
+                        compilerType: _constants1.COMPILER_NAMES.client,
+                        entrypoints: entrypoints.client,
+                        ...info
+                    }),
+                    (0, _webpackconfig.default)(this.dir, {
+                        ...commonWebpackOptions,
+                        compilerType: _constants1.COMPILER_NAMES.server,
+                        entrypoints: entrypoints.server,
+                        ...info
+                    }),
+                    (0, _webpackconfig.default)(this.dir, {
+                        ...commonWebpackOptions,
+                        compilerType: _constants1.COMPILER_NAMES.edgeServer,
+                        entrypoints: entrypoints.edgeServer,
+                        ...info
+                    })
+                ]);
+            });
+        });
+    }
+    async buildFallbackError() {
+        if (this.fallbackWatcher) return;
+        const info = await (0, _webpackconfig.loadProjectInfo)({
+            dir: this.dir,
+            config: this.config,
+            dev: true
+        });
+        const fallbackConfig = await (0, _webpackconfig.default)(this.dir, {
+            runWebpackSpan: this.hotReloaderSpan,
+            dev: true,
+            compilerType: _constants1.COMPILER_NAMES.client,
+            config: this.config,
+            buildId: this.buildId,
+            encryptionKey: this.encryptionKey,
+            pagesDir: this.pagesDir,
+            rewrites: {
+                beforeFiles: [],
+                afterFiles: [],
+                fallback: []
+            },
+            originalRewrites: {
+                beforeFiles: [],
+                afterFiles: [],
+                fallback: []
+            },
+            originalRedirects: [],
+            isDevFallback: true,
+            entrypoints: (await (0, _entries.createEntrypoints)({
+                appDir: this.appDir,
+                buildId: this.buildId,
+                config: this.config,
+                envFiles: [],
+                isDev: true,
+                pages: {
+                    "/_app": "next/dist/pages/_app",
+                    "/_error": "next/dist/pages/_error"
+                },
+                pagesDir: this.pagesDir,
+                previewMode: this.previewProps,
+                rootDir: this.dir,
+                pageExtensions: this.config.pageExtensions
+            })).client,
+            ...info
+        });
+        const fallbackCompiler = (0, _webpack.webpack)(fallbackConfig);
+        this.fallbackWatcher = await new Promise((resolve)=>{
+            let bootedFallbackCompiler = false;
+            fallbackCompiler.watch(// @ts-ignore webpack supports an array of watchOptions when using a multiCompiler
+            fallbackConfig.watchOptions, // Errors are handled separately
+            (_err)=>{
+                if (!bootedFallbackCompiler) {
+                    bootedFallbackCompiler = true;
+                    resolve(true);
+                }
+            });
+        });
+    }
+    async tracedGetVersionInfo(span, enabled) {
+        const versionInfoSpan = span.traceChild("get-version-info");
+        return versionInfoSpan.traceAsyncFn(async ()=>getVersionInfo(enabled));
+    }
+    async start() {
+        const startSpan = this.hotReloaderSpan.traceChild("start");
+        startSpan.stop() // Stop immediately to create an artificial parent span
+        ;
+        this.versionInfo = await this.tracedGetVersionInfo(startSpan, isTestMode || this.telemetry.isEnabled);
+        await this.clean(startSpan);
+        // Ensure distDir exists before writing package.json
+        await _fs.promises.mkdir(this.distDir, {
+            recursive: true
+        });
+        const distPackageJsonPath = (0, _path.join)(this.distDir, "package.json");
+        // Ensure commonjs handling is used for files in the distDir (generally .next)
+        // Files outside of the distDir can be "type": "module"
+        await _fs.promises.writeFile(distPackageJsonPath, '{"type": "commonjs"}');
+        this.activeWebpackConfigs = await this.getWebpackConfig(startSpan);
+        for (const config of this.activeWebpackConfigs){
+            const defaultEntry = config.entry;
+            config.entry = async (...args)=>{
+                var _this_multiCompiler;
+                const outputPath = ((_this_multiCompiler = this.multiCompiler) == null ? void 0 : _this_multiCompiler.outputPath) || "";
+                const entries = (0, _ondemandentryhandler.getEntries)(outputPath);
+                // @ts-ignore entry is always a function
+                const entrypoints = await defaultEntry(...args);
+                const isClientCompilation = config.name === _constants1.COMPILER_NAMES.client;
+                const isNodeServerCompilation = config.name === _constants1.COMPILER_NAMES.server;
+                const isEdgeServerCompilation = config.name === _constants1.COMPILER_NAMES.edgeServer;
+                await Promise.all(Object.keys(entries).map(async (entryKey)=>{
+                    const entryData = entries[entryKey];
+                    const { bundlePath, dispose } = entryData;
+                    const result = /^(client|server|edge-server)@(app|pages|root)@(.*)/g.exec(entryKey);
+                    const [, key /* pageType */ , , page] = result// this match should always happen
+                    ;
+                    if (key === _constants1.COMPILER_NAMES.client && !isClientCompilation) return;
+                    if (key === _constants1.COMPILER_NAMES.server && !isNodeServerCompilation) return;
+                    if (key === _constants1.COMPILER_NAMES.edgeServer && !isEdgeServerCompilation) return;
+                    const isEntry = entryData.type === _ondemandentryhandler.EntryTypes.ENTRY;
+                    const isChildEntry = entryData.type === _ondemandentryhandler.EntryTypes.CHILD_ENTRY;
+                    // Check if the page was removed or disposed and remove it
+                    if (isEntry) {
+                        const pageExists = !dispose && (0, _fs.existsSync)(entryData.absolutePagePath);
+                        if (!pageExists) {
+                            delete entries[entryKey];
+                            return;
+                        }
+                    }
+                    // For child entries, if it has an entry file and it's gone, remove it
+                    if (isChildEntry) {
+                        if (entryData.absoluteEntryFilePath) {
+                            const pageExists = !dispose && (0, _fs.existsSync)(entryData.absoluteEntryFilePath);
+                            if (!pageExists) {
+                                delete entries[entryKey];
+                                return;
+                            }
+                        }
+                    }
+                    // Ensure _error is considered a `pages` page.
+                    if (page === "/_error") {
+                        this.hasPagesRouterEntrypoints = true;
+                    }
+                    const hasAppDir = !!this.appDir;
+                    const isAppPath = hasAppDir && bundlePath.startsWith("app/");
+                    const staticInfo = isEntry ? await (0, _entries.getStaticInfoIncludingLayouts)({
+                        isInsideAppDir: isAppPath,
+                        pageExtensions: this.config.pageExtensions,
+                        pageFilePath: entryData.absolutePagePath,
+                        appDir: this.appDir,
+                        config: this.config,
+                        isDev: true,
+                        page
+                    }) : {};
+                    if (staticInfo.amp === true || staticInfo.amp === "hybrid") {
+                        this.hasAmpEntrypoints = true;
+                    }
+                    const isServerComponent = isAppPath && staticInfo.rsc !== _constants1.RSC_MODULE_TYPES.client;
+                    const pageType = entryData.bundlePath.startsWith("pages/") ? _pagetypes.PAGE_TYPES.PAGES : entryData.bundlePath.startsWith("app/") ? _pagetypes.PAGE_TYPES.APP : _pagetypes.PAGE_TYPES.ROOT;
+                    if (pageType === "pages") {
+                        this.hasPagesRouterEntrypoints = true;
+                    }
+                    if (pageType === "app") {
+                        this.hasAppRouterEntrypoints = true;
+                    }
+                    const isInstrumentation = (0, _utils.isInstrumentationHookFile)(page) && pageType === _pagetypes.PAGE_TYPES.ROOT;
+                    (0, _entries.runDependingOnPageType)({
+                        page,
+                        pageRuntime: staticInfo.runtime,
+                        pageType,
+                        onEdgeServer: ()=>{
+                            // TODO-APP: verify if child entry should support.
+                            if (!isEdgeServerCompilation || !isEntry) return;
+                            entries[entryKey].status = _ondemandentryhandler.BUILDING;
+                            if (isInstrumentation) {
+                                const normalizedBundlePath = bundlePath.replace("src/", "");
+                                entrypoints[normalizedBundlePath] = (0, _entries.finalizeEntrypoint)({
+                                    compilerType: _constants1.COMPILER_NAMES.edgeServer,
+                                    name: normalizedBundlePath,
+                                    value: (0, _entries.getInstrumentationEntry)({
+                                        absolutePagePath: entryData.absolutePagePath,
+                                        isEdgeServer: true,
+                                        isDev: true
+                                    }),
+                                    isServerComponent: true,
+                                    hasAppDir
+                                });
+                                return;
+                            }
+                            const appDirLoader = isAppPath ? (0, _entries.getAppEntry)({
+                                name: bundlePath,
+                                page,
+                                appPaths: entryData.appPaths,
+                                pagePath: _path.posix.join(_constants.APP_DIR_ALIAS, (0, _path.relative)(this.appDir, entryData.absolutePagePath).replace(/\\/g, "/")),
+                                appDir: this.appDir,
+                                pageExtensions: this.config.pageExtensions,
+                                rootDir: this.dir,
+                                isDev: true,
+                                tsconfigPath: this.config.typescript.tsconfigPath,
+                                basePath: this.config.basePath,
+                                assetPrefix: this.config.assetPrefix,
+                                nextConfigOutput: this.config.output,
+                                preferredRegion: staticInfo.preferredRegion,
+                                middlewareConfig: Buffer.from(JSON.stringify(staticInfo.middleware || {})).toString("base64")
+                            }).import : undefined;
+                            entrypoints[bundlePath] = (0, _entries.finalizeEntrypoint)({
+                                compilerType: _constants1.COMPILER_NAMES.edgeServer,
+                                name: bundlePath,
+                                value: (0, _entries.getEdgeServerEntry)({
+                                    absolutePagePath: entryData.absolutePagePath,
+                                    rootDir: this.dir,
+                                    buildId: this.buildId,
+                                    bundlePath,
+                                    config: this.config,
+                                    isDev: true,
+                                    page,
+                                    pages: this.pagesMapping,
+                                    isServerComponent,
+                                    appDirLoader,
+                                    pagesType: isAppPath ? _pagetypes.PAGE_TYPES.APP : _pagetypes.PAGE_TYPES.PAGES,
+                                    preferredRegion: staticInfo.preferredRegion
+                                }),
+                                hasAppDir
+                            });
+                        },
+                        onClient: ()=>{
+                            if (!isClientCompilation) return;
+                            if (isChildEntry) {
+                                entries[entryKey].status = _ondemandentryhandler.BUILDING;
+                                entrypoints[bundlePath] = (0, _entries.finalizeEntrypoint)({
+                                    name: bundlePath,
+                                    compilerType: _constants1.COMPILER_NAMES.client,
+                                    value: entryData.request,
+                                    hasAppDir
+                                });
+                            } else {
+                                entries[entryKey].status = _ondemandentryhandler.BUILDING;
+                                entrypoints[bundlePath] = (0, _entries.finalizeEntrypoint)({
+                                    name: bundlePath,
+                                    compilerType: _constants1.COMPILER_NAMES.client,
+                                    value: (0, _entries.getClientEntry)({
+                                        absolutePagePath: entryData.absolutePagePath,
+                                        page
+                                    }),
+                                    hasAppDir
+                                });
+                            }
+                        },
+                        onServer: ()=>{
+                            // TODO-APP: verify if child entry should support.
+                            if (!isNodeServerCompilation || !isEntry) return;
+                            entries[entryKey].status = _ondemandentryhandler.BUILDING;
+                            let relativeRequest = (0, _path.relative)(config.context, entryData.absolutePagePath);
+                            if (!(0, _path.isAbsolute)(relativeRequest) && !relativeRequest.startsWith("../")) {
+                                relativeRequest = `./${relativeRequest}`;
+                            }
+                            let value;
+                            if (isInstrumentation) {
+                                value = (0, _entries.getInstrumentationEntry)({
+                                    absolutePagePath: entryData.absolutePagePath,
+                                    isEdgeServer: false,
+                                    isDev: true
+                                });
+                                entrypoints[bundlePath] = (0, _entries.finalizeEntrypoint)({
+                                    compilerType: _constants1.COMPILER_NAMES.server,
+                                    name: bundlePath,
+                                    isServerComponent: true,
+                                    value,
+                                    hasAppDir
+                                });
+                            } else if (isAppPath) {
+                                value = (0, _entries.getAppEntry)({
+                                    name: bundlePath,
+                                    page,
+                                    appPaths: entryData.appPaths,
+                                    pagePath: _path.posix.join(_constants.APP_DIR_ALIAS, (0, _path.relative)(this.appDir, entryData.absolutePagePath).replace(/\\/g, "/")),
+                                    appDir: this.appDir,
+                                    pageExtensions: this.config.pageExtensions,
+                                    rootDir: this.dir,
+                                    isDev: true,
+                                    tsconfigPath: this.config.typescript.tsconfigPath,
+                                    basePath: this.config.basePath,
+                                    assetPrefix: this.config.assetPrefix,
+                                    nextConfigOutput: this.config.output,
+                                    preferredRegion: staticInfo.preferredRegion,
+                                    middlewareConfig: Buffer.from(JSON.stringify(staticInfo.middleware || {})).toString("base64")
+                                });
+                            } else if ((0, _isapiroute.isAPIRoute)(page)) {
+                                value = (0, _nextrouteloader.getRouteLoaderEntry)({
+                                    kind: _routekind.RouteKind.PAGES_API,
+                                    page,
+                                    absolutePagePath: relativeRequest,
+                                    preferredRegion: staticInfo.preferredRegion,
+                                    middlewareConfig: staticInfo.middleware || {}
+                                });
+                            } else if (!(0, _utils.isMiddlewareFile)(page) && !(0, _isinternalcomponent.isInternalComponent)(relativeRequest) && !(0, _isinternalcomponent.isNonRoutePagesPage)(page) && !isInstrumentation) {
+                                value = (0, _nextrouteloader.getRouteLoaderEntry)({
+                                    kind: _routekind.RouteKind.PAGES,
+                                    page,
+                                    pages: this.pagesMapping,
+                                    absolutePagePath: relativeRequest,
+                                    preferredRegion: staticInfo.preferredRegion,
+                                    middlewareConfig: staticInfo.middleware ?? {}
+                                });
+                            } else {
+                                value = relativeRequest;
+                            }
+                            entrypoints[bundlePath] = (0, _entries.finalizeEntrypoint)({
+                                compilerType: _constants1.COMPILER_NAMES.server,
+                                name: bundlePath,
+                                isServerComponent,
+                                value,
+                                hasAppDir
+                            });
+                        }
+                    });
+                }));
+                if (!this.hasAmpEntrypoints) {
+                    delete entrypoints[_constants1.CLIENT_STATIC_FILES_RUNTIME_AMP];
+                }
+                if (!this.hasPagesRouterEntrypoints) {
+                    delete entrypoints[_constants1.CLIENT_STATIC_FILES_RUNTIME_MAIN];
+                    delete entrypoints["pages/_app"];
+                    delete entrypoints["pages/_error"];
+                    delete entrypoints["/_error"];
+                    delete entrypoints["pages/_document"];
+                }
+                // Remove React Refresh entrypoint chunk as `app` doesn't require it.
+                if (!this.hasAmpEntrypoints && !this.hasPagesRouterEntrypoints) {
+                    delete entrypoints[_constants1.CLIENT_STATIC_FILES_RUNTIME_REACT_REFRESH];
+                }
+                if (!this.hasAppRouterEntrypoints) {
+                    delete entrypoints[_constants1.CLIENT_STATIC_FILES_RUNTIME_MAIN_APP];
+                }
+                return entrypoints;
+            };
+        }
+        // Enable building of client compilation before server compilation in development
+        // @ts-ignore webpack 5
+        this.activeWebpackConfigs.parallelism = 1;
+        this.multiCompiler = (0, _webpack.webpack)(this.activeWebpackConfigs);
+        // Copy over the filesystem so that it is shared between all compilers.
+        const inputFileSystem = this.multiCompiler.compilers[0].inputFileSystem;
+        for (const compiler of this.multiCompiler.compilers){
+            compiler.inputFileSystem = inputFileSystem;
+            // This is set for the initial compile. After that Watching class in webpack adds it.
+            compiler.fsStartTime = Date.now();
+            // E

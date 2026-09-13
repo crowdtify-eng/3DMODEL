@@ -1,0 +1,410 @@
+ort ? {
+                            compress: false
+                        } : {},
+                        cacheHandler: cacheHandler ? path.relative(distDir, cacheHandler) : config.cacheHandler,
+                        experimental: {
+                            ...config.experimental,
+                            trustHostHeader: ciEnvironment.hasNextSupport,
+                            // @ts-expect-error internal field TODO: fix this, should use a separate mechanism to pass the info.
+                            isExperimentalCompile: isCompileMode
+                        }
+                    },
+                    appDir: dir,
+                    relativeAppDir: path.relative(outputFileTracingRoot, dir),
+                    files: [
+                        ROUTES_MANIFEST,
+                        path.relative(distDir, pagesManifestPath),
+                        BUILD_MANIFEST,
+                        PRERENDER_MANIFEST,
+                        path.join(SERVER_DIRECTORY, MIDDLEWARE_MANIFEST),
+                        path.join(SERVER_DIRECTORY, MIDDLEWARE_BUILD_MANIFEST + ".js"),
+                        path.join(SERVER_DIRECTORY, MIDDLEWARE_REACT_LOADABLE_MANIFEST + ".js"),
+                        ...appDir ? [
+                            ...config.experimental.sri ? [
+                                path.join(SERVER_DIRECTORY, SUBRESOURCE_INTEGRITY_MANIFEST + ".js"),
+                                path.join(SERVER_DIRECTORY, SUBRESOURCE_INTEGRITY_MANIFEST + ".json")
+                            ] : [],
+                            path.join(SERVER_DIRECTORY, APP_PATHS_MANIFEST),
+                            path.join(APP_PATH_ROUTES_MANIFEST),
+                            APP_BUILD_MANIFEST,
+                            path.join(SERVER_DIRECTORY, SERVER_REFERENCE_MANIFEST + ".js"),
+                            path.join(SERVER_DIRECTORY, SERVER_REFERENCE_MANIFEST + ".json")
+                        ] : [],
+                        REACT_LOADABLE_MANIFEST,
+                        config.optimizeFonts ? path.join(SERVER_DIRECTORY, AUTOMATIC_FONT_OPTIMIZATION_MANIFEST) : null,
+                        BUILD_ID_FILE,
+                        path.join(SERVER_DIRECTORY, NEXT_FONT_MANIFEST + ".js"),
+                        path.join(SERVER_DIRECTORY, NEXT_FONT_MANIFEST + ".json"),
+                        ...hasInstrumentationHook ? [
+                            path.join(SERVER_DIRECTORY, `${INSTRUMENTATION_HOOK_FILENAME}.js`),
+                            path.join(SERVER_DIRECTORY, `edge-${INSTRUMENTATION_HOOK_FILENAME}.js`)
+                        ] : []
+                    ].filter(nonNullable).map((file)=>path.join(config.distDir, file)),
+                    ignore: []
+                };
+                return serverFilesManifest;
+            });
+            async function turbopackBuild() {
+                var _config_experimental;
+                if (!IS_TURBOPACK_BUILD) {
+                    throw new Error("next build doesn't support turbopack yet");
+                }
+                await validateTurboNextConfig({
+                    dir,
+                    isDev: false
+                });
+                const startTime = process.hrtime();
+                const bindings = await loadBindings(config == null ? void 0 : (_config_experimental = config.experimental) == null ? void 0 : _config_experimental.useWasmBinary);
+                const dev = false;
+                const project = await bindings.turbo.createProject({
+                    projectPath: dir,
+                    rootPath: config.experimental.outputFileTracingRoot || dir,
+                    nextConfig: config,
+                    jsConfig: await getTurbopackJsConfig(dir, config),
+                    watch: false,
+                    dev,
+                    env: process.env,
+                    defineEnv: createDefineEnv({
+                        isTurbopack: true,
+                        clientRouterFilters: NextBuildContext.clientRouterFilters,
+                        config,
+                        dev,
+                        distDir,
+                        fetchCacheKeyPrefix: config.experimental.fetchCacheKeyPrefix,
+                        hasRewrites,
+                        // TODO: Implement
+                        middlewareMatchers: undefined
+                    }),
+                    buildId: NextBuildContext.buildId,
+                    encryptionKey: NextBuildContext.encryptionKey,
+                    previewProps: NextBuildContext.previewProps
+                });
+                await fs.mkdir(path.join(distDir, "server"), {
+                    recursive: true
+                });
+                await fs.mkdir(path.join(distDir, "static", buildId), {
+                    recursive: true
+                });
+                await fs.writeFile(path.join(distDir, "package.json"), JSON.stringify({
+                    type: "commonjs"
+                }, null, 2));
+                // eslint-disable-next-line @typescript-eslint/no-unused-vars
+                const entrypointsSubscription = project.entrypointsSubscribe();
+                const currentEntrypoints = {
+                    global: {
+                        app: undefined,
+                        document: undefined,
+                        error: undefined,
+                        middleware: undefined,
+                        instrumentation: undefined
+                    },
+                    app: new Map(),
+                    page: new Map()
+                };
+                const currentEntryIssues = new Map();
+                const manifestLoader = new TurbopackManifestLoader({
+                    buildId,
+                    distDir,
+                    encryptionKey
+                });
+                // TODO: implement this
+                const emptyRewritesObjToBeImplemented = {
+                    beforeFiles: [],
+                    afterFiles: [],
+                    fallback: []
+                };
+                const entrypointsResult = await entrypointsSubscription.next();
+                if (entrypointsResult.done) {
+                    throw new Error("Turbopack did not return any entrypoints");
+                }
+                entrypointsSubscription.return == null ? void 0 : entrypointsSubscription.return.call(entrypointsSubscription).catch(()=>{});
+                const entrypoints = entrypointsResult.value;
+                const topLevelErrors = [];
+                for (const issue of entrypoints.issues){
+                    topLevelErrors.push({
+                        message: formatIssue(issue)
+                    });
+                }
+                if (topLevelErrors.length > 0) {
+                    throw new Error(`Turbopack build failed with ${topLevelErrors.length} issues:\n${topLevelErrors.map((e)=>e.message).join("\n")}`);
+                }
+                await handleEntrypoints({
+                    entrypoints,
+                    currentEntrypoints,
+                    currentEntryIssues,
+                    manifestLoader,
+                    nextConfig: config,
+                    rewrites: emptyRewritesObjToBeImplemented,
+                    logErrors: false
+                });
+                const progress = createProgress(currentEntrypoints.page.size + currentEntrypoints.app.size + 1, "Building");
+                const promises = [];
+                const sema = new Sema(10);
+                const enqueue = (fn)=>{
+                    promises.push((async ()=>{
+                        await sema.acquire();
+                        try {
+                            await fn();
+                        } finally{
+                            sema.release();
+                            progress();
+                        }
+                    })());
+                };
+                for (const [page, route] of currentEntrypoints.page){
+                    enqueue(()=>handleRouteType({
+                            dev,
+                            page,
+                            pathname: page,
+                            route,
+                            currentEntryIssues,
+                            entrypoints: currentEntrypoints,
+                            manifestLoader,
+                            rewrites: emptyRewritesObjToBeImplemented,
+                            logErrors: false
+                        }));
+                }
+                for (const [page, route] of currentEntrypoints.app){
+                    enqueue(()=>handleRouteType({
+                            page,
+                            dev: false,
+                            pathname: normalizeAppPath(page),
+                            route,
+                            currentEntryIssues,
+                            entrypoints: currentEntrypoints,
+                            manifestLoader,
+                            rewrites: emptyRewritesObjToBeImplemented,
+                            logErrors: false
+                        }));
+                }
+                enqueue(()=>handlePagesErrorRoute({
+                        currentEntryIssues,
+                        entrypoints: currentEntrypoints,
+                        manifestLoader,
+                        rewrites: emptyRewritesObjToBeImplemented,
+                        logErrors: false
+                    }));
+                await Promise.all(promises);
+                await manifestLoader.writeManifests({
+                    rewrites: emptyRewritesObjToBeImplemented,
+                    pageEntrypoints: currentEntrypoints.page
+                });
+                const errors = [];
+                const warnings = [];
+                for (const [page, entryIssues] of currentEntryIssues){
+                    for (const issue of entryIssues.values()){
+                        if (issue.severity !== "warning") {
+                            errors.push({
+                                page,
+                                message: formatIssue(issue)
+                            });
+                        } else {
+                            if (isRelevantWarning(issue)) {
+                                warnings.push({
+                                    page,
+                                    message: formatIssue(issue)
+                                });
+                            }
+                        }
+                    }
+                }
+                if (warnings.length > 0) {
+                    Log.warn(`Turbopack build collected ${warnings.length} warnings:\n${warnings.map((e)=>{
+                        return "Page: " + e.page + "\n" + e.message;
+                    }).join("\n")}`);
+                }
+                if (errors.length > 0) {
+                    throw new Error(`Turbopack build failed with ${errors.length} errors:\n${errors.map((e)=>{
+                        return "Page: " + e.page + "\n" + e.message;
+                    }).join("\n")}`);
+                }
+                return {
+                    duration: process.hrtime(startTime)[0],
+                    buildTraceContext: undefined
+                };
+            }
+            let buildTraceContext;
+            let buildTracesPromise = undefined;
+            // If there's has a custom webpack config and disable the build worker.
+            // Otherwise respect the option if it's set.
+            const useBuildWorker = config.experimental.webpackBuildWorker || config.experimental.webpackBuildWorker === undefined && !config.webpack;
+            const runServerAndEdgeInParallel = config.experimental.parallelServerCompiles;
+            const collectServerBuildTracesInParallel = config.experimental.parallelServerBuildTraces || config.experimental.parallelServerBuildTraces === undefined && isCompileMode;
+            nextBuildSpan.setAttribute("has-custom-webpack-config", String(!!config.webpack));
+            nextBuildSpan.setAttribute("use-build-worker", String(useBuildWorker));
+            if (!useBuildWorker && (runServerAndEdgeInParallel || collectServerBuildTracesInParallel)) {
+                throw new Error('The "parallelServerBuildTraces" and "parallelServerCompiles" options may only be used when build workers can be used. Read more: https://nextjs.org/docs/messages/parallel-build-without-worker');
+            }
+            Log.info("Creating an optimized production build ...");
+            traceMemoryUsage("Starting build", nextBuildSpan);
+            if (!isGenerateMode) {
+                if (runServerAndEdgeInParallel || collectServerBuildTracesInParallel) {
+                    let durationInSeconds = 0;
+                    const serverBuildPromise = webpackBuild(useBuildWorker, [
+                        "server"
+                    ]).then((res)=>{
+                        traceMemoryUsage("Finished server compilation", nextBuildSpan);
+                        buildTraceContext = res.buildTraceContext;
+                        durationInSeconds += res.duration;
+                        if (collectServerBuildTracesInParallel) {
+                            const buildTraceWorker = new Worker(require.resolve("./collect-build-traces"), {
+                                numWorkers: 1,
+                                exposedMethods: [
+                                    "collectBuildTraces"
+                                ]
+                            });
+                            buildTracesPromise = buildTraceWorker.collectBuildTraces({
+                                dir,
+                                config,
+                                distDir,
+                                // Serialize Map as this is sent to the worker.
+                                pageInfos: serializePageInfos(new Map()),
+                                staticPages: [],
+                                hasSsrAmpPages: false,
+                                buildTraceContext,
+                                outputFileTracingRoot
+                            }).catch((err)=>{
+                                console.error(err);
+                                process.exit(1);
+                            });
+                        }
+                    });
+                    if (!runServerAndEdgeInParallel) {
+                        await serverBuildPromise;
+                    }
+                    const edgeBuildPromise = webpackBuild(useBuildWorker, [
+                        "edge-server"
+                    ]).then((res)=>{
+                        durationInSeconds += res.duration;
+                        traceMemoryUsage("Finished edge-server compilation", nextBuildSpan);
+                    });
+                    if (runServerAndEdgeInParallel) {
+                        await serverBuildPromise;
+                    }
+                    await edgeBuildPromise;
+                    await webpackBuild(useBuildWorker, [
+                        "client"
+                    ]).then((res)=>{
+                        durationInSeconds += res.duration;
+                        traceMemoryUsage("Finished client compilation", nextBuildSpan);
+                    });
+                    Log.event("Compiled successfully");
+                    telemetry.record(eventBuildCompleted(pagesPaths, {
+                        durationInSeconds,
+                        totalAppPagesCount
+                    }));
+                } else {
+                    const { duration: compilerDuration, ...rest } = turboNextBuild ? await turbopackBuild() : await webpackBuild(useBuildWorker, null);
+                    traceMemoryUsage("Finished build", nextBuildSpan);
+                    buildTraceContext = rest.buildTraceContext;
+                    telemetry.record(eventBuildCompleted(pagesPaths, {
+                        durationInSeconds: compilerDuration,
+                        totalAppPagesCount
+                    }));
+                }
+            }
+            // For app directory, we run type checking after build.
+            if (appDir && !isCompileMode && !isGenerateMode) {
+                await startTypeChecking(typeCheckingOptions);
+                traceMemoryUsage("Finished type checking", nextBuildSpan);
+            }
+            const postCompileSpinner = createSpinner("Collecting page data");
+            const buildManifestPath = path.join(distDir, BUILD_MANIFEST);
+            const appBuildManifestPath = path.join(distDir, APP_BUILD_MANIFEST);
+            let staticAppPagesCount = 0;
+            let serverAppPagesCount = 0;
+            let edgeRuntimeAppCount = 0;
+            let edgeRuntimePagesCount = 0;
+            const ssgPages = new Set();
+            const ssgStaticFallbackPages = new Set();
+            const ssgBlockingFallbackPages = new Set();
+            const staticPages = new Set();
+            const invalidPages = new Set();
+            const hybridAmpPages = new Set();
+            const serverPropsPages = new Set();
+            const additionalSsgPaths = new Map();
+            const additionalSsgPathsEncoded = new Map();
+            const appStaticPaths = new Map();
+            const appPrefetchPaths = new Map();
+            const appStaticPathsEncoded = new Map();
+            const appNormalizedPaths = new Map();
+            const appDynamicParamPaths = new Set();
+            const appDefaultConfigs = new Map();
+            const pageInfos = new Map();
+            const pagesManifest = await readManifest(pagesManifestPath);
+            const buildManifest = await readManifest(buildManifestPath);
+            const appBuildManifest = appDir ? await readManifest(appBuildManifestPath) : undefined;
+            const appPathRoutes = {};
+            if (appDir) {
+                const appPathsManifest = await readManifest(path.join(distDir, SERVER_DIRECTORY, APP_PATHS_MANIFEST));
+                for(const key in appPathsManifest){
+                    appPathRoutes[key] = normalizeAppPath(key);
+                }
+                await writeManifest(path.join(distDir, APP_PATH_ROUTES_MANIFEST), appPathRoutes);
+            }
+            process.env.NEXT_PHASE = PHASE_PRODUCTION_BUILD;
+            let incrementalCacheIpcPort;
+            let incrementalCacheIpcValidationKey;
+            if (config.experimental.staticWorkerRequestDeduping) {
+                let CacheHandler;
+                if (cacheHandler) {
+                    CacheHandler = interopDefault(await import(formatDynamicImportPath(dir, cacheHandler)).then((mod)=>mod.default || mod));
+                }
+                const cacheInitialization = await initializeIncrementalCache({
+                    fs: nodeFs,
+                    dev: false,
+                    pagesDir: true,
+                    appDir: true,
+                    fetchCache: true,
+                    flushToDisk: ciEnvironment.hasNextSupport ? false : config.experimental.isrFlushToDisk,
+                    serverDistDir: path.join(distDir, "server"),
+                    fetchCacheKeyPrefix: config.experimental.fetchCacheKeyPrefix,
+                    maxMemoryCacheSize: config.cacheMaxMemorySize,
+                    getPrerenderManifest: ()=>({
+                            version: -1,
+                            routes: {},
+                            dynamicRoutes: {},
+                            notFoundRoutes: [],
+                            preview: null
+                        }),
+                    requestHeaders: {},
+                    CurCacheHandler: CacheHandler,
+                    minimalMode: ciEnvironment.hasNextSupport,
+                    allowedRevalidateHeaderKeys: config.experimental.allowedRevalidateHeaderKeys,
+                    experimental: {
+                        ppr: config.experimental.ppr === true
+                    }
+                });
+                incrementalCacheIpcPort = cacheInitialization.ipcPort;
+                incrementalCacheIpcValidationKey = cacheInitialization.ipcValidationKey;
+            }
+            const pagesStaticWorkers = createStaticWorker(config, incrementalCacheIpcPort, incrementalCacheIpcValidationKey);
+            const appStaticWorkers = appDir ? createStaticWorker(config, incrementalCacheIpcPort, incrementalCacheIpcValidationKey) : undefined;
+            const analysisBegin = process.hrtime();
+            const staticCheckSpan = nextBuildSpan.traceChild("static-check");
+            const functionsConfigManifest = {
+                version: 1,
+                functions: {}
+            };
+            const { customAppGetInitialProps, namedExports, isNextImageImported, hasSsrAmpPages, hasNonStaticErrorPage } = await staticCheckSpan.traceAsyncFn(async ()=>{
+                if (isCompileMode) {
+                    return {
+                        customAppGetInitialProps: false,
+                        namedExports: [],
+                        isNextImageImported: true,
+                        hasSsrAmpPages: !!pagesDir,
+                        hasNonStaticErrorPage: true
+                    };
+                }
+                const { configFileName, publicRuntimeConfig, serverRuntimeConfig } = config;
+                const runtimeEnvConfig = {
+                    publicRuntimeConfig,
+                    serverRuntimeConfig
+                };
+                const nonStaticErrorPageSpan = staticCheckSpan.traceChild("check-static-error-page");
+                const errorPageHasCustomGetInitialProps = nonStaticErrorPageSpan.traceAsyncFn(async ()=>hasCustomErrorPage && await pagesStaticWorkers.hasCustomGetInitialProps({
+                        page: "/_error",
+                        distDir,
+                        runtimeEnvConfig,
+                        checkingApp: false
+              
